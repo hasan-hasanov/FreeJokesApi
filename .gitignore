@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Source/.vs/FreeJokesApi/v15
+/Source/Domain/obj
+/Source/Domain/bin/Debug/netstandard2.0
+/Source/FreeJokesApi/obj
+/Source/FreeJokesApi/bin/Debug/netcoreapp2.0
