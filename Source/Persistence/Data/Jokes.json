@@ -2,17 +2,17 @@
 	"jokes": [{
 			"id": "5920ff05d9ab4203bb8a55b91fbf2250",
 			"description": "Anton, do you think I’m a bad mother? \n My name is Paul.",
-			"category": 1
+			"categoryId": 1
 		},
-		{
-			"id": "81f67fdbf552427d95c3d40ad42bf142",
-			"description": "The congress regarding hypochondria was canceled due to illness.",
-			"category": 1
-		},
-		{
-			"id": "aaba4d9eea304971a22227a0f4fbdd39",
-			"description": "A man enters a taxi with a hot dog. \n – Excuse me, this is not a restaurant! \n – I know. That’s why I brought my own food!",
-			"category": 1
-		}
+    {
+      "id": "81f67fdbf552427d95c3d40ad42bf142",
+      "description": "The congress regarding hypochondria was canceled due to illness.",
+      "categoryId": 1
+    },
+    {
+      "id": "aaba4d9eea304971a22227a0f4fbdd39",
+      "description": "A man enters a taxi with a hot dog. \n – Excuse me, this is not a restaurant! \n – I know. That’s why I brought my own food!",
+      "categoryId": 1
+    }
 	]
 }

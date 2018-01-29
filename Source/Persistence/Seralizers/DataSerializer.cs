@@ -1,5 +1,6 @@
 ﻿using Domain.Entities;
 using Newtonsoft.Json;
+using Persistence.Seralizers.Model;
 using Persistence.Serializers.Abstract;
 using System;
 using System.Collections.Generic;
@@ -10,28 +11,35 @@ namespace Persistence.Seralizers
 {
     public class DataSerializer : IDataSerializer
     {
-        private const string JOKES_LOCATION = "/Data/Jokes.json";
-        private const string CATEGORIES_LOCATION = "/Data/Categories.json";
+        private readonly string jokesLocation;
+        private readonly string categoriesLocation;
+
+        public DataSerializer()
+        {
+            jokesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Jokes.json";
+            categoriesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Categories.json";
+        }
 
         public List<Joke> SerializeJokes()
         {
-            using (StreamReader file = File.OpenText(JOKES_LOCATION))
+
+            using (StreamReader file = File.OpenText(jokesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                List<Joke> jokes = (List<Joke>)serializer.Deserialize(file, typeof(List<Joke>));
+                JokeSerializeModel jokeSerializeModel = (JokeSerializeModel)serializer.Deserialize(file, typeof(JokeSerializeModel));
 
-                return jokes;
+                return jokeSerializeModel.Jokes;
             }
         }
 
         public List<Category> SerializerCategories()
         {
-            using (StreamReader file = File.OpenText(CATEGORIES_LOCATION))
+            using (StreamReader file = File.OpenText(categoriesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                List<Category> categories = (List<Category>)serializer.Deserialize(file, typeof(List<Category>));
+                CategorySerializerModel categorySerializeModel = (CategorySerializerModel)serializer.Deserialize(file, typeof(CategorySerializerModel));
 
-                return categories;
+                return categorySerializeModel.Categories;
             }
         }
     }
