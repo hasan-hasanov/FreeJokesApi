@@ -4,6 +4,9 @@
 
 /Source/.vs/FreeJokesApi/v15
 /Source/Domain/obj
-/Source/Domain/bin/Debug/netstandard2.0
+/Source/Domain/bin/
 /Source/FreeJokesApi/obj
-/Source/FreeJokesApi/bin/Debug/netcoreapp2.0
+/Source/FreeJokesApi/bin/
+/Source/Application/bin/
+/Source/Application/obj
+/Source/Persistence/obj

@@ -11,6 +11,6 @@ namespace Domain.Entities
 
         public string Description { get; set; }
 
-        public int Category { get; set; }
+        public int CategoryId { get; set; }
     }
 }

@@ -7,6 +7,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeJokesApi", "FreeJokesAp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A73A7C20-D103-414A-A969-49664A979DBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{969A945E-3F16-4292-8DEA-65BD216EA617}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A73A7C20-D103-414A-A969-49664A979DBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A73A7C20-D103-414A-A969-49664A979DBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A73A7C20-D103-414A-A969-49664A979DBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A73A7C20-D103-414A-A969-49664A979DBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{969A945E-3F16-4292-8DEA-65BD216EA617}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{969A945E-3F16-4292-8DEA-65BD216EA617}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{969A945E-3F16-4292-8DEA-65BD216EA617}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{969A945E-3F16-4292-8DEA-65BD216EA617}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
