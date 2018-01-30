@@ -1,9 +1,7 @@
 ﻿using Application.Abstract;
 using Domain.Entities;
 using Persistence.Serializers.Abstract;
-using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Persistence
 {
