@@ -1,7 +1,7 @@
 ﻿using Domain.Entities;
 using System.Collections.Generic;
 
-namespace Persistence.Seralizers.Model
+namespace Persistence.Serializers.Model
 {
     public class CategorySerializerModel
     {

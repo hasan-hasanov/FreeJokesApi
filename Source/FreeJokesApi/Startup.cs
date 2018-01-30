@@ -1,4 +1,6 @@
 ﻿using Application.Abstract;
+using Application.Jokes.Queries.GetJokesByCount;
+using Application.Jokes.Queries.GetJokesByCount.Abstract;
 using Application.Jokes.Queries.GetJokesWithCategories;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke;
@@ -27,8 +29,10 @@ namespace FreeJokesApi
             services.AddMvc();
 
             services.AddScoped<IJokeService, JokeService>();
+
             services.AddScoped<IGetAllJokesQuery, GetAllJokesQuery>();
             services.AddScoped<IGetRandomJokeQuery, GetRandomJokeQuery>();
+            services.AddScoped<IGetJokesByCountQuery, GetJokesByCountQuery>();
 
             services.AddScoped<IDataSerializer, DataSerializer>();
         }

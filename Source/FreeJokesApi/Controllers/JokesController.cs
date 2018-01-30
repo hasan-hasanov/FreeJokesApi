@@ -1,4 +1,5 @@
-﻿using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
+﻿using Application.Jokes.Queries.GetJokesByCount.Abstract;
+using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -13,12 +14,15 @@ namespace FreeJokesApi.Controllers
     {
         IGetAllJokesQuery _getJokesWithCategoriesQuery;
         IGetRandomJokeQuery _getRandomJokeQuery;
+        IGetJokesByCountQuery _getJokesByCount;
 
         public JokesController(IGetAllJokesQuery getJokesWithCategoriesQuery,
-            IGetRandomJokeQuery getRandomJokeQuery)
+            IGetRandomJokeQuery getRandomJokeQuery,
+            IGetJokesByCountQuery getJokesByCount)
         {
             _getJokesWithCategoriesQuery = getJokesWithCategoriesQuery;
             _getRandomJokeQuery = getRandomJokeQuery;
+            _getJokesByCount = getJokesByCount;
         }
 
         [HttpGet]

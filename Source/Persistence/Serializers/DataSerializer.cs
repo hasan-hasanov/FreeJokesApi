@@ -1,11 +1,10 @@
 ﻿using Domain.Entities;
 using Newtonsoft.Json;
-using Persistence.Seralizers.Model;
 using Persistence.Serializers.Abstract;
+using Persistence.Serializers.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Persistence.Seralizers
 {
@@ -22,7 +21,6 @@ namespace Persistence.Seralizers
 
         public List<Joke> SerializeJokes()
         {
-
             using (StreamReader file = File.OpenText(jokesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
