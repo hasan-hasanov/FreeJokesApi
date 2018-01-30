@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
+using Application.Jokes.Models;
 
 namespace Application.Jokes.Queries.GetJokesWithCategories
 {
-    public class GetJokesWithCategoriesQuery : IGetJokesWithCategoriesQuery
+    public class GetAllJokesQuery : IGetAllJokesQuery
     {
         private readonly IJokeService _jokeService;
 
-        public GetJokesWithCategoriesQuery(IJokeService jokeService)
+        public GetAllJokesQuery(IJokeService jokeService)
         {
             _jokeService = jokeService;
         }

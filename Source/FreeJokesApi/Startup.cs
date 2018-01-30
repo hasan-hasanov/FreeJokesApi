@@ -1,6 +1,8 @@
 ﻿using Application.Abstract;
 using Application.Jokes.Queries.GetJokesWithCategories;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
+using Application.Jokes.Queries.GetRandomJoke;
+using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -25,7 +27,8 @@ namespace FreeJokesApi
             services.AddMvc();
 
             services.AddScoped<IJokeService, JokeService>();
-            services.AddScoped<IGetJokesWithCategoriesQuery, GetJokesWithCategoriesQuery>();
+            services.AddScoped<IGetAllJokesQuery, GetAllJokesQuery>();
+            services.AddScoped<IGetRandomJokeQuery, GetRandomJokeQuery>();
 
             services.AddScoped<IDataSerializer, DataSerializer>();
         }

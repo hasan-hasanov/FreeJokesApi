@@ -1,4 +1,4 @@
-﻿namespace Application.Jokes.Queries.GetJokesWithCategories
+﻿namespace Application.Jokes.Models
 {
     public class JokeModel
     {
