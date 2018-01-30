@@ -1,11 +1,8 @@
 ﻿using Application.Abstract;
 using Application.Jokes.Models;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
-using Domain.Entities;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Application.Jokes.Queries.GetRandomJokeByCategory
 {

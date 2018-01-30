@@ -1,9 +1,7 @@
 ﻿using Application.Abstract;
 using Application.Jokes.Models;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace Application.Jokes.Queries.GetAllJokesByCategory

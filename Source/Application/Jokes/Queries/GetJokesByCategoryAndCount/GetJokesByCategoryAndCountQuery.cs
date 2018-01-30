@@ -3,7 +3,6 @@ using Application.Jokes.Models;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 
 namespace Application.Jokes.Queries.GetJokesByCategoryAndCount

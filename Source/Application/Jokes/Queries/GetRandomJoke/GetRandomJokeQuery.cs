@@ -2,8 +2,6 @@
 using Application.Jokes.Models;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Linq;
 using Domain.Entities;
 

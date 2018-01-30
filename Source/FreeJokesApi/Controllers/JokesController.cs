@@ -7,10 +7,6 @@ using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FreeJokesApi.Controllers
 {
