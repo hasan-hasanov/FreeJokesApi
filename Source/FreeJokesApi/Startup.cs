@@ -1,4 +1,6 @@
 ﻿using Application.Abstract;
+using Application.Categories.Queries.GetAllCategoriesQuery;
+using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById;
@@ -37,6 +39,8 @@ namespace FreeJokesApi
             services.AddMvc();
 
             services.AddScoped<IJokeService, JokeService>();
+
+            services.AddScoped<IGetAllCategoriesQuery, GetAllCategoriesQuery>();
 
             services.AddScoped<IGetAllJokesQuery, GetAllJokesQuery>();
             services.AddScoped<IGetAllJokesByCategoryQuery, GetAllJokesByCategoryQuery>();

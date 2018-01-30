@@ -1,4 +1,6 @@
-﻿using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
+﻿using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
+using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
+using Application.Jokes.Queries.GetJokeById.Abstrac;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount.Abstract;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
@@ -15,25 +17,31 @@ namespace FreeJokesApi.Controllers
     [Route("api/[controller]")]
     public class JokesController : Controller
     {
-        IGetAllJokesQuery _getJokesWithCategoriesQuery;
-        IGetRandomJokeQuery _getRandomJokeQuery;
-        IGetJokesByCountQuery _getJokesByCount;
-        IGetAllJokesByCategoryQuery _getAllJokesByCategoryQuery;
-        IGetJokesByCategoryAndCountQuery _getJokesByCategoryAndCountQuery;
-        IGetRandomJokeByCategoryQuery _getRandomJokeByCategoryQuery;
+        private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
+        private readonly IGetAllJokesQuery _getJokesWithCategoriesQuery;
+        private readonly IGetAllJokesByCategoryQuery _getAllJokesByCategoryQuery;
+        private readonly IGetJokeByIdQuery _getJokeByIdQuery;
+        private readonly IGetJokesByCategoryAndCountQuery _getJokesByCategoryAndCountQuery;
+        private readonly IGetJokesByCountQuery _getJokesByCount;
+        private readonly IGetRandomJokeQuery _getRandomJokeQuery;
+        private readonly IGetRandomJokeByCategoryQuery _getRandomJokeByCategoryQuery;
 
-        public JokesController(IGetAllJokesQuery getJokesWithCategoriesQuery,
-            IGetRandomJokeQuery getRandomJokeQuery,
-            IGetJokesByCountQuery getJokesByCount,
+        public JokesController(IGetAllCategoriesQuery getAllCategoriesQuery,
+            IGetAllJokesQuery getJokesWithCategoriesQuery,
             IGetAllJokesByCategoryQuery getAllJokesByCategoryQuery,
+            IGetJokeByIdQuery getJokeByIdQuery,
             IGetJokesByCategoryAndCountQuery getJokesByCategoryAndCount,
+            IGetJokesByCountQuery getJokesByCount,
+            IGetRandomJokeQuery getRandomJokeQuery,
             IGetRandomJokeByCategoryQuery getRandomJokeByCategoryQuery)
         {
+            _getAllCategoriesQuery = getAllCategoriesQuery;
             _getJokesWithCategoriesQuery = getJokesWithCategoriesQuery;
-            _getRandomJokeQuery = getRandomJokeQuery;
-            _getJokesByCount = getJokesByCount;
             _getAllJokesByCategoryQuery = getAllJokesByCategoryQuery;
+            _getJokeByIdQuery = getJokeByIdQuery;
             _getJokesByCategoryAndCountQuery = getJokesByCategoryAndCount;
+            _getJokesByCount = getJokesByCount;
+            _getRandomJokeQuery = getRandomJokeQuery;
             _getRandomJokeByCategoryQuery = getRandomJokeByCategoryQuery;
         }
 
