@@ -1,10 +1,16 @@
 ﻿using Application.Abstract;
+using Application.Jokes.Queries.GetAllJokesByCategory;
+using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
+using Application.Jokes.Queries.GetJokesByCategoryAndCount;
+using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount;
 using Application.Jokes.Queries.GetJokesByCount.Abstract;
 using Application.Jokes.Queries.GetJokesWithCategories;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
+using Application.Jokes.Queries.GetRandomJokeByCategory;
+using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -31,8 +37,11 @@ namespace FreeJokesApi
             services.AddScoped<IJokeService, JokeService>();
 
             services.AddScoped<IGetAllJokesQuery, GetAllJokesQuery>();
-            services.AddScoped<IGetRandomJokeQuery, GetRandomJokeQuery>();
+            services.AddScoped<IGetAllJokesByCategoryQuery, GetAllJokesByCategoryQuery>();
+            services.AddScoped<IGetJokesByCategoryAndCountQuery, GetJokesByCategoryAndCountQuery>();
             services.AddScoped<IGetJokesByCountQuery, GetJokesByCountQuery>();
+            services.AddScoped<IGetRandomJokeQuery, GetRandomJokeQuery>();
+            services.AddScoped<IGetRandomJokeByCategoryQuery, GetRandomJokeByCategoryQuery>();
 
             services.AddScoped<IDataSerializer, DataSerializer>();
         }

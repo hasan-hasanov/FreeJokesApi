@@ -1,6 +1,9 @@
-﻿using Application.Jokes.Queries.GetJokesByCount.Abstract;
+﻿using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
+using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
+using Application.Jokes.Queries.GetJokesByCount.Abstract;
 using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
+using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -15,14 +18,23 @@ namespace FreeJokesApi.Controllers
         IGetAllJokesQuery _getJokesWithCategoriesQuery;
         IGetRandomJokeQuery _getRandomJokeQuery;
         IGetJokesByCountQuery _getJokesByCount;
+        IGetAllJokesByCategoryQuery _getAllJokesByCategoryQuery;
+        IGetJokesByCategoryAndCountQuery _getJokesByCategoryAndCountQuery;
+        IGetRandomJokeByCategoryQuery _getRandomJokeByCategoryQuery;
 
         public JokesController(IGetAllJokesQuery getJokesWithCategoriesQuery,
             IGetRandomJokeQuery getRandomJokeQuery,
-            IGetJokesByCountQuery getJokesByCount)
+            IGetJokesByCountQuery getJokesByCount,
+            IGetAllJokesByCategoryQuery getAllJokesByCategoryQuery,
+            IGetJokesByCategoryAndCountQuery getJokesByCategoryAndCount,
+            IGetRandomJokeByCategoryQuery getRandomJokeByCategoryQuery)
         {
             _getJokesWithCategoriesQuery = getJokesWithCategoriesQuery;
             _getRandomJokeQuery = getRandomJokeQuery;
             _getJokesByCount = getJokesByCount;
+            _getAllJokesByCategoryQuery = getAllJokesByCategoryQuery;
+            _getJokesByCategoryAndCountQuery = getJokesByCategoryAndCount;
+            _getRandomJokeByCategoryQuery = getRandomJokeByCategoryQuery;
         }
 
         [HttpGet]
