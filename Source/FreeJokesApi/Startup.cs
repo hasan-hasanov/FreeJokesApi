@@ -15,10 +15,15 @@ using Application.Jokes.Queries.GetRandomJoke;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
+using FreeJokesApi.Exceptions;
+using FreeJokesApi.Exceptions.Abstract;
+using FreeJokesApi.Exceptions.Builder;
+using FreeJokesApi.Exceptions.Builder.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json;
 using Persistence;
 using Persistence.Seralizers;
 using Persistence.Serializers.Abstract;
@@ -51,14 +56,23 @@ namespace FreeJokesApi
             services.AddScoped<IGetRandomJokeByCategoryQuery, GetRandomJokeByCategoryQuery>();
 
             services.AddScoped<IDataSerializer, DataSerializer>();
+
+            services.AddScoped<IExceptionBuilder, ExceptionBuilder>();
+            services.AddScoped<IJsonExceptionMiddleware, JsonExceptionMiddleware>();
+            services.AddScoped<JsonSerializer>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IJsonExceptionMiddleware jsonExceptionMiddleware)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseExceptionHandler(new ExceptionHandlerOptions
+            {
+                ExceptionHandler = jsonExceptionMiddleware.Invoke
+            });
 
             app.UseMvc();
         }
