@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace FreeJokesApi.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class JokesController : Controller
     {
         private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
@@ -47,6 +47,14 @@ namespace FreeJokesApi.Controllers
             var jokes = _getJokesWithCategoriesQuery.Execute();
 
             return Json(jokes);
+        }
+
+        [HttpGet]
+        public JsonResult GetRnadomJoke()
+        {
+            var joke = _getRandomJokeQuery.Execute();
+
+            return Json(joke);
         }
     }
 }
