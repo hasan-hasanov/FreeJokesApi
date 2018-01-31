@@ -1,4 +1,6 @@
-﻿using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
+﻿using Application.Categories.Models;
+using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
+using Application.Jokes.Models;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById.Abstrac;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
@@ -7,6 +9,7 @@ using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 
 namespace FreeJokesApi.Controllers
 {
@@ -42,17 +45,32 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult Get()
+        public JsonResult GetAllCategories()
         {
-            var jokes = _getJokesWithCategoriesQuery.Execute();
+            List<CategoryModel> categories = _getAllCategoriesQuery.Execute();
+
+            return Json(categories);
+        }
+
+        [HttpGet]
+        public JsonResult GetAllJokes()
+        {
+            List<JokeModel> jokes = _getJokesWithCategoriesQuery.Execute();
 
             return Json(jokes);
         }
 
-        [HttpGet]
-        public JsonResult GetRnadomJoke()
+        public JsonResult GetAllJokesByCategory(string categoryName)
         {
-            var joke = _getRandomJokeQuery.Execute();
+            List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
+
+            return Json(jokesByCategory);
+        }
+
+        [HttpGet]
+        public JsonResult GetRandomJoke()
+        {
+            JokeModel joke = _getRandomJokeQuery.Execute();
 
             return Json(joke);
         }
