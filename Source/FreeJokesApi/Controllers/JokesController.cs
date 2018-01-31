@@ -17,7 +17,7 @@ namespace FreeJokesApi.Controllers
     public class JokesController : Controller
     {
         private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
-        private readonly IGetAllJokesQuery _getJokesWithCategoriesQuery;
+        private readonly IGetAllJokesQuery _getAllJokesQuery;
         private readonly IGetAllJokesByCategoryQuery _getAllJokesByCategoryQuery;
         private readonly IGetJokeByIdQuery _getJokeByIdQuery;
         private readonly IGetJokesByCategoryAndCountQuery _getJokesByCategoryAndCountQuery;
@@ -26,7 +26,7 @@ namespace FreeJokesApi.Controllers
         private readonly IGetRandomJokeByCategoryQuery _getRandomJokeByCategoryQuery;
 
         public JokesController(IGetAllCategoriesQuery getAllCategoriesQuery,
-            IGetAllJokesQuery getJokesWithCategoriesQuery,
+            IGetAllJokesQuery getAllJokesQuery,
             IGetAllJokesByCategoryQuery getAllJokesByCategoryQuery,
             IGetJokeByIdQuery getJokeByIdQuery,
             IGetJokesByCategoryAndCountQuery getJokesByCategoryAndCount,
@@ -35,7 +35,7 @@ namespace FreeJokesApi.Controllers
             IGetRandomJokeByCategoryQuery getRandomJokeByCategoryQuery)
         {
             _getAllCategoriesQuery = getAllCategoriesQuery;
-            _getJokesWithCategoriesQuery = getJokesWithCategoriesQuery;
+            _getAllJokesQuery = getAllJokesQuery;
             _getAllJokesByCategoryQuery = getAllJokesByCategoryQuery;
             _getJokeByIdQuery = getJokeByIdQuery;
             _getJokesByCategoryAndCountQuery = getJokesByCategoryAndCount;
@@ -55,11 +55,12 @@ namespace FreeJokesApi.Controllers
         [HttpGet]
         public JsonResult GetAllJokes()
         {
-            List<JokeModel> jokes = _getJokesWithCategoriesQuery.Execute();
+            List<JokeModel> jokes = _getAllJokesQuery.Execute();
 
             return Json(jokes);
         }
 
+        [HttpGet]
         public JsonResult GetAllJokesByCategory(string categoryName)
         {
             List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
@@ -68,9 +69,41 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
+        public JsonResult GetAllJokesByCategoryAndCount(string categoryName, int count)
+        {
+            List<JokeModel> jokesByCategory = _getJokesByCategoryAndCountQuery.Execute(categoryName, count);
+
+            return Json(jokesByCategory);
+        }
+
+        [HttpGet]
+        public JsonResult GetJokesByCount(int count)
+        {
+            List<JokeModel> jokesByCount = _getJokesByCount.Execute(count);
+
+            return Json(jokesByCount);
+        }
+
+        [HttpGet]
+        public JsonResult GetJokeById(string jokeId)
+        {
+            JokeModel joke = _getJokeByIdQuery.Execute(jokeId);
+
+            return Json(joke);
+        }
+
+        [HttpGet]
         public JsonResult GetRandomJoke()
         {
             JokeModel joke = _getRandomJokeQuery.Execute();
+
+            return Json(joke);
+        }
+
+        [HttpGet]
+        public JsonResult GetRandomJokeByCategory(string categoryName)
+        {
+            JokeModel joke = _getRandomJokeByCategoryQuery.Execute(categoryName);
 
             return Json(joke);
         }
