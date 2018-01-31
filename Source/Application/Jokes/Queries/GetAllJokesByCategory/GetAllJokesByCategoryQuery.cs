@@ -25,7 +25,7 @@ namespace Application.Jokes.Queries.GetAllJokesByCategory
                         Description = joke.Description,
                         Category = category.Description
                     })
-                    .Where(j => j.Category.Trim().ToLower() == categoryName.Trim().ToLower())
+                    .Where(j => j.Category.Trim().ToLower() == categoryName?.Trim()?.ToLower())
                     .ToList();
         }
     }

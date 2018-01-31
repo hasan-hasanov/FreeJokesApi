@@ -19,7 +19,7 @@ namespace Application.Jokes.Queries.GetJokeById
         {
             Joke joke = _jokeService
                 .Jokes
-                .FirstOrDefault(j => j.Id == jokeId.Trim());
+                .FirstOrDefault(j => j.Id == jokeId?.Trim());
 
             if (joke == null) return null;
 

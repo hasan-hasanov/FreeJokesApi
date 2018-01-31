@@ -10,6 +10,8 @@ using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace FreeJokesApi.Controllers
 {
@@ -65,13 +67,19 @@ namespace FreeJokesApi.Controllers
         {
             List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
 
+            if (!jokesByCategory.Any()) return Json(NotFound());
+
             return Json(jokesByCategory);
         }
 
         [HttpGet]
         public JsonResult GetAllJokesByCategoryAndCount(string categoryName, int count)
         {
+            if (count <= 0) return Json(NotFound());
+
             List<JokeModel> jokesByCategory = _getJokesByCategoryAndCountQuery.Execute(categoryName, count);
+
+            if (!jokesByCategory.Any()) return Json(NotFound());
 
             return Json(jokesByCategory);
         }
@@ -79,6 +87,8 @@ namespace FreeJokesApi.Controllers
         [HttpGet]
         public JsonResult GetJokesByCount(int count)
         {
+            if (count <= 0) return Json(NotFound());
+
             List<JokeModel> jokesByCount = _getJokesByCount.Execute(count);
 
             return Json(jokesByCount);
@@ -87,7 +97,11 @@ namespace FreeJokesApi.Controllers
         [HttpGet]
         public JsonResult GetJokeById(string jokeId)
         {
+            if (string.IsNullOrWhiteSpace(jokeId)) return Json(NotFound());
+
             JokeModel joke = _getJokeByIdQuery.Execute(jokeId);
+
+            if (joke == null) return Json(NotFound());
 
             return Json(joke);
         }
@@ -103,7 +117,11 @@ namespace FreeJokesApi.Controllers
         [HttpGet]
         public JsonResult GetRandomJokeByCategory(string categoryName)
         {
+            if (string.IsNullOrWhiteSpace(categoryName)) return Json(NotFound());
+
             JokeModel joke = _getRandomJokeByCategoryQuery.Execute(categoryName);
+
+            if (joke == null) return Json(NotFound());
 
             return Json(joke);
         }

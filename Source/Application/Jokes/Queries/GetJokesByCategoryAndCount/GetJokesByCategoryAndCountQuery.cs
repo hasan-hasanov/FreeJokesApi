@@ -26,7 +26,7 @@ namespace Application.Jokes.Queries.GetJokesByCategoryAndCount
                         Description = joke.Description,
                         Category = category.Description
                     })
-                   .Where(j => j.Category.Trim().ToLower() == categoryName.Trim().ToLower())
+                   .Where(j => j.Category.Trim().ToLower() == categoryName?.Trim()?.ToLower())
                    .OrderBy(j => Guid.NewGuid())
                    .Take(count)
                    .ToList();
