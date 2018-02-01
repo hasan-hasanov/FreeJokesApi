@@ -5,8 +5,8 @@ namespace Persistence.Serializers.Abstract
 {
     public interface IDataSerializer
     {
-        List<Category> SerializerCategories();
+        IEnumerable<Category> SerializerCategories();
 
-        List<Joke> SerializeJokes();
+        IEnumerable<Joke> SerializeJokes();
     }
 }

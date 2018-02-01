@@ -5,8 +5,8 @@ namespace Application.Abstract
 {
     public interface IJokeService
     {
-        List<Joke> Jokes { get; }
+        IEnumerable<Joke> Jokes { get; }
 
-        List<Category> Categories { get; }
+        IEnumerable<Category> Categories { get; }
     }
 }

@@ -1,9 +1,9 @@
 ﻿using Application.Abstract;
 using Application.Jokes.Models;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
+using Domain.Entities;
 using System;
 using System.Linq;
-using Domain.Entities;
 
 namespace Application.Jokes.Queries.GetRandomJoke
 {

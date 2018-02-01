@@ -1,10 +1,10 @@
 ﻿using Application.Abstract;
+using Application.Jokes.Models;
+using Application.Jokes.Queries.GetAllJokes.Abstract;
 using System.Collections.Generic;
 using System.Linq;
-using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
-using Application.Jokes.Models;
 
-namespace Application.Jokes.Queries.GetJokesWithCategories
+namespace Application.Jokes.Queries.GetAllJokes
 {
     public class GetAllJokesQuery : IGetAllJokesQuery
     {

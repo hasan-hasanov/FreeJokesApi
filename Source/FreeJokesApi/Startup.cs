@@ -1,6 +1,8 @@
 ﻿using Application.Abstract;
 using Application.Categories.Queries.GetAllCategoriesQuery;
 using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
+using Application.Jokes.Queries.GetAllJokes;
+using Application.Jokes.Queries.GetAllJokes.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById;
@@ -9,8 +11,6 @@ using Application.Jokes.Queries.GetJokesByCategoryAndCount;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount;
 using Application.Jokes.Queries.GetJokesByCount.Abstract;
-using Application.Jokes.Queries.GetJokesWithCategories;
-using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory;
@@ -21,12 +21,11 @@ using FreeJokesApi.Exceptions.Builder;
 using FreeJokesApi.Exceptions.Builder.Abstract;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Persistence;
-using Persistence.Seralizers;
+using Persistence.Serializers;
 using Persistence.Serializers.Abstract;
 using Serilog;
 using Serilog.Exceptions;
@@ -37,18 +36,14 @@ namespace FreeJokesApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
-
             Log.Logger = new LoggerConfiguration()
                 .MinimumLevel.Error()
                 .Enrich.WithExceptionDetails()
                 .WriteTo.RollingFile(new JsonFormatter(renderMessage: true), Path.Combine(env.ContentRootPath, "../FreeJokesApi/log-{Date}.txt"))
                 .CreateLogger();
         }
-
-        public IConfiguration Configuration { get; }
 
         public void ConfigureServices(IServiceCollection services)
         {

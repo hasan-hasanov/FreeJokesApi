@@ -2,15 +2,12 @@
 using FreeJokesApi.Models;
 using Microsoft.AspNetCore.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace FreeJokesApi.Exceptions.Builder
 {
     public class ExceptionBuilder : IExceptionBuilder
     {
-        private const string DEFAULT_ERROR_MESSAGE = "A server error occurred.";
+        private const string DefaultErrorMessage = "A server error occurred.";
 
         public ApiErrorModel BuildException(Exception ex, IHostingEnvironment env)
         {
@@ -23,7 +20,7 @@ namespace FreeJokesApi.Exceptions.Builder
             }
             else
             {
-                error.Message = DEFAULT_ERROR_MESSAGE;
+                error.Message = DefaultErrorMessage;
                 error.Details = ex.Message;
             }
 

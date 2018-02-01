@@ -1,10 +1,8 @@
 ﻿using Application.Abstract;
 using Application.Categories.Models;
 using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Application.Categories.Queries.GetAllCategoriesQuery
 {

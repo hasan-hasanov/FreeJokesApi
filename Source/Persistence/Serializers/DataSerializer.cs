@@ -6,22 +6,22 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 
-namespace Persistence.Seralizers
+namespace Persistence.Serializers
 {
     public class DataSerializer : IDataSerializer
     {
-        private readonly string jokesLocation;
-        private readonly string categoriesLocation;
+        private readonly string _jokesLocation;
+        private readonly string _categoriesLocation;
 
         public DataSerializer()
         {
-            jokesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Jokes.json";
-            categoriesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Categories.json";
+            _jokesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Jokes.json";
+            _categoriesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Categories.json";
         }
 
-        public List<Joke> SerializeJokes()
+        public IEnumerable<Joke> SerializeJokes()
         {
-            using (StreamReader file = File.OpenText(jokesLocation))
+            using (StreamReader file = File.OpenText(_jokesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 JokeSerializeModel jokeSerializeModel = (JokeSerializeModel)serializer.Deserialize(file, typeof(JokeSerializeModel));
@@ -30,9 +30,9 @@ namespace Persistence.Seralizers
             }
         }
 
-        public List<Category> SerializerCategories()
+        public IEnumerable<Category> SerializerCategories()
         {
-            using (StreamReader file = File.OpenText(categoriesLocation))
+            using (StreamReader file = File.OpenText(_categoriesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 CategorySerializerModel categorySerializeModel = (CategorySerializerModel)serializer.Deserialize(file, typeof(CategorySerializerModel));

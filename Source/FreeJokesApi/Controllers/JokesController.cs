@@ -1,11 +1,11 @@
 ﻿using Application.Categories.Models;
 using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
 using Application.Jokes.Models;
+using Application.Jokes.Queries.GetAllJokes.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById.Abstrac;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount.Abstract;
-using Application.Jokes.Queries.GetJokesWithCategories.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;
 using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
@@ -66,9 +66,7 @@ namespace FreeJokesApi.Controllers
         {
             List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
 
-            if (!jokesByCategory.Any()) return Json(NotFound());
-
-            return Json(jokesByCategory);
+            return !jokesByCategory.Any() ? Json(NotFound()) : Json(jokesByCategory);
         }
 
         [HttpGet]
@@ -88,9 +86,7 @@ namespace FreeJokesApi.Controllers
 
             List<JokeModel> jokesByCategory = _getJokesByCategoryAndCountQuery.Execute(categoryName, count);
 
-            if (!jokesByCategory.Any()) return Json(NotFound());
-
-            return Json(jokesByCategory);
+            return !jokesByCategory.Any() ? Json(NotFound()) : Json(jokesByCategory);
         }
 
         [HttpGet]
@@ -100,9 +96,7 @@ namespace FreeJokesApi.Controllers
 
             JokeModel joke = _getJokeByIdQuery.Execute(jokeId);
 
-            if (joke == null) return Json(NotFound());
-
-            return Json(joke);
+            return joke == null ? Json(NotFound()) : Json(joke);
         }
 
         [HttpGet]
@@ -120,9 +114,7 @@ namespace FreeJokesApi.Controllers
 
             JokeModel joke = _getRandomJokeByCategoryQuery.Execute(categoryName);
 
-            if (joke == null) return Json(NotFound());
-
-            return Json(joke);
+            return joke == null ? Json(NotFound()) : Json(joke);
         }
     }
 }
