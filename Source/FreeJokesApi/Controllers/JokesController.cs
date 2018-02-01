@@ -62,7 +62,7 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllJokesByCategory(string categoryName)
+        public JsonResult GetJokes(string categoryName)
         {
             List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
 
@@ -72,7 +72,17 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllJokesByCategoryAndCount(string categoryName, int count)
+        public JsonResult GetJokes(int count)
+        {
+            if (count <= 0) return Json(NotFound());
+
+            List<JokeModel> jokesByCount = _getJokesByCount.Execute(count);
+
+            return Json(jokesByCount);
+        }
+
+        [HttpGet]
+        public JsonResult GetJokes(string categoryName, int count)
         {
             if (count <= 0) return Json(NotFound());
 
@@ -81,16 +91,6 @@ namespace FreeJokesApi.Controllers
             if (!jokesByCategory.Any()) return Json(NotFound());
 
             return Json(jokesByCategory);
-        }
-
-        [HttpGet]
-        public JsonResult GetJokesByCount(int count)
-        {
-            if (count <= 0) return Json(NotFound());
-
-            List<JokeModel> jokesByCount = _getJokesByCount.Execute(count);
-
-            return Json(jokesByCount);
         }
 
         [HttpGet]
@@ -114,7 +114,7 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetRandomJokeByCategory(string categoryName)
+        public JsonResult GetRandomJoke(string categoryName)
         {
             if (string.IsNullOrWhiteSpace(categoryName)) return Json(NotFound());
 
