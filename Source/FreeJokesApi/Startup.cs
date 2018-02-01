@@ -23,18 +23,29 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Persistence;
 using Persistence.Seralizers;
 using Persistence.Serializers.Abstract;
+using Serilog;
+using Serilog.Exceptions;
+using Serilog.Formatting.Json;
+using System.IO;
 
 namespace FreeJokesApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+
+            Log.Logger = new LoggerConfiguration()
+                .MinimumLevel.Error()
+                .Enrich.WithExceptionDetails()
+                .WriteTo.RollingFile(new JsonFormatter(renderMessage: true), Path.Combine(env.ContentRootPath, "../FreeJokesApi/log-{Date}.txt"))
+                .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
@@ -62,8 +73,10 @@ namespace FreeJokesApi
             services.AddScoped<JsonSerializer>();
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, IJsonExceptionMiddleware jsonExceptionMiddleware)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IJsonExceptionMiddleware jsonExceptionMiddleware)
         {
+            loggerFactory.AddSerilog();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

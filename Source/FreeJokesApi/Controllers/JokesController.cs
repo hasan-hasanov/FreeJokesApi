@@ -11,7 +11,6 @@ using Application.Jokes.Queries.GetRandomJokeByCategory.Abstract;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 
 namespace FreeJokesApi.Controllers
 {
