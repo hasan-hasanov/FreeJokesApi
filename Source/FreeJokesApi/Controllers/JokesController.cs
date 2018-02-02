@@ -54,14 +54,14 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetAllJokes()
+        public JsonResult GetAll()
         {
             List<JokeModel> jokes = _getAllJokesQuery.Execute();
 
             return Json(jokes);
         }
 
-        [HttpGet]
+        [HttpGet("{categoryName}", Name = "GetByCategoryName")]
         public JsonResult GetJokes(string categoryName)
         {
             List<JokeModel> jokesByCategory = _getAllJokesByCategoryQuery.Execute(categoryName);
@@ -69,7 +69,7 @@ namespace FreeJokesApi.Controllers
             return !jokesByCategory.Any() ? Json(NotFound()) : Json(jokesByCategory);
         }
 
-        [HttpGet]
+        [HttpGet("{count}", Name = "GetByCount")]
         public JsonResult GetJokes(int count)
         {
             if (count <= 0) return Json(NotFound());
@@ -79,7 +79,7 @@ namespace FreeJokesApi.Controllers
             return Json(jokesByCount);
         }
 
-        [HttpGet]
+        [HttpGet("{categoryName}&{count}", Name = "GetByCategoryAndCount")]
         public JsonResult GetJokes(string categoryName, int count)
         {
             if (count <= 0) return Json(NotFound());
@@ -90,7 +90,7 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetJokeById(string jokeId)
+        public JsonResult GetById(string jokeId)
         {
             if (string.IsNullOrWhiteSpace(jokeId)) return Json(NotFound());
 
@@ -100,15 +100,15 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetRandomJoke()
+        public JsonResult Random()
         {
             JokeModel joke = _getRandomJokeQuery.Execute();
 
             return Json(joke);
         }
 
-        [HttpGet]
-        public JsonResult GetRandomJoke(string categoryName)
+        [HttpGet("{categoryName}", Name = "GetRandom")]
+        public JsonResult Random(string categoryName)
         {
             if (string.IsNullOrWhiteSpace(categoryName)) return Json(NotFound());
 
