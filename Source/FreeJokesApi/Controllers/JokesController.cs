@@ -77,11 +77,11 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetById(string jokeId)
+        public JsonResult GetById(string id)
         {
-            if (string.IsNullOrWhiteSpace(jokeId)) return Json(NotFound());
+            if (string.IsNullOrWhiteSpace(id)) return Json(NotFound());
 
-            JokeModel joke = _getJokeByIdQuery.Execute(jokeId);
+            JokeModel joke = _getJokeByIdQuery.Execute(id);
 
             return joke == null ? Json(NotFound()) : Json(joke);
         }

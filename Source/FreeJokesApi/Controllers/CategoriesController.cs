@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace FreeJokesApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
         private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
