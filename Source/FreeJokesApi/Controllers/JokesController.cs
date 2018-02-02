@@ -1,6 +1,4 @@
-﻿using Application.Categories.Models;
-using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
-using Application.Jokes.Models;
+﻿using Application.Jokes.Models;
 using Application.Jokes.Queries.GetAllJokes.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById.Abstrac;
@@ -17,7 +15,6 @@ namespace FreeJokesApi.Controllers
     [Route("api/[controller]/[action]")]
     public class JokesController : Controller
     {
-        private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
         private readonly IGetAllJokesQuery _getAllJokesQuery;
         private readonly IGetAllJokesByCategoryQuery _getAllJokesByCategoryQuery;
         private readonly IGetJokeByIdQuery _getJokeByIdQuery;
@@ -26,8 +23,7 @@ namespace FreeJokesApi.Controllers
         private readonly IGetRandomJokeQuery _getRandomJokeQuery;
         private readonly IGetRandomJokeByCategoryQuery _getRandomJokeByCategoryQuery;
 
-        public JokesController(IGetAllCategoriesQuery getAllCategoriesQuery,
-            IGetAllJokesQuery getAllJokesQuery,
+        public JokesController(IGetAllJokesQuery getAllJokesQuery,
             IGetAllJokesByCategoryQuery getAllJokesByCategoryQuery,
             IGetJokeByIdQuery getJokeByIdQuery,
             IGetJokesByCategoryAndCountQuery getJokesByCategoryAndCount,
@@ -35,7 +31,6 @@ namespace FreeJokesApi.Controllers
             IGetRandomJokeQuery getRandomJokeQuery,
             IGetRandomJokeByCategoryQuery getRandomJokeByCategoryQuery)
         {
-            _getAllCategoriesQuery = getAllCategoriesQuery;
             _getAllJokesQuery = getAllJokesQuery;
             _getAllJokesByCategoryQuery = getAllJokesByCategoryQuery;
             _getJokeByIdQuery = getJokeByIdQuery;
@@ -43,14 +38,6 @@ namespace FreeJokesApi.Controllers
             _getJokesByCount = getJokesByCount;
             _getRandomJokeQuery = getRandomJokeQuery;
             _getRandomJokeByCategoryQuery = getRandomJokeByCategoryQuery;
-        }
-
-        [HttpGet]
-        public JsonResult GetAllCategories()
-        {
-            List<CategoryModel> categories = _getAllCategoriesQuery.Execute();
-
-            return Json(categories);
         }
 
         [HttpGet]
