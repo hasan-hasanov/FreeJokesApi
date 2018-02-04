@@ -115,7 +115,7 @@ The joke json file has the following format:
     },
 ```
 
-* If your category does not exist yet, just add it HERE(https://github.com/hasan-hasanov/FreeJokesApi/blob/master/Jokes/Categories.json).
+* If your category does not exist yet, just add it [HERE](https://github.com/hasan-hasanov/FreeJokesApi/blob/master/Jokes/Categories.json).
 The category json file has the following format:
 
 ```json
