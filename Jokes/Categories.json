@@ -1,0 +1,12 @@
+{
+  "categories": [
+    {
+      "id": "1",
+      "description": "Stupid"
+    },
+    {
+      "id": "2",
+      "description": "Programmer"
+    }
+  ]
+}
