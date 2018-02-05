@@ -16,3 +16,6 @@
 /Source/Domain2.Test/bin/Debug/netcoreapp2.0
 /Source/Domain2.Test/obj
 /Source/Application.Test/obj
+/Source/Domain.Test/bin/Debug
+/Source/packages
+/Source/Domain.Test/Domain.Test.csproj.user

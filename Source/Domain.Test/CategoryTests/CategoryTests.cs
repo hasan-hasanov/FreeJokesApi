@@ -1,10 +1,11 @@
 ﻿using Domain.Entities;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
-using Xunit;
 using Assert = NUnit.Framework.Assert;
 
 namespace Domain.Test.CategoryTests
 {
+    [TestClass]
     public class CategoryTests
     {
         private readonly Category _category;
@@ -18,7 +19,7 @@ namespace Domain.Test.CategoryTests
             _category = new Category();
         }
 
-        [Fact]
+        [TestMethod]
         public void TestSetAndGetId()
         {
             _category.Id = Id;
@@ -26,7 +27,7 @@ namespace Domain.Test.CategoryTests
             Assert.That(_category.Id, Is.EqualTo(Id));
         }
 
-        [Fact]
+        [TestMethod]
         public void TestSetAndGetDescription()
         {
             _category.Description = Description;
