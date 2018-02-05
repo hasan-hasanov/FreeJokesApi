@@ -28,7 +28,7 @@ namespace Domain.Test.CategoryTests
         }
 
         [Test]
-        public void TestSetAndGetName()
+        public void TestSetAndGetDescription()
         {
             _category.Description = Description;
 
