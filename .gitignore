@@ -13,3 +13,5 @@
 /Source/Persistence/bin/
 /Source/Domain.Test/bin/Debug/netcoreapp2.0
 /Source/Domain.Test/obj
+/Source/Domain2.Test/bin/Debug/netcoreapp2.0
+/Source/Domain2.Test/obj

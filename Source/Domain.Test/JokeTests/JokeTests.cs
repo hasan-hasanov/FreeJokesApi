@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Entities;
+﻿using Domain.Entities;
 using NUnit.Framework;
+using Assert = NUnit.Framework.Assert;
 
 namespace Domain.Test.JokeTests
 {

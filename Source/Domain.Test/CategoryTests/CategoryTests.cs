@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Domain.Entities;
+﻿using Domain.Entities;
 using NUnit.Framework;
+using Xunit;
+using Assert = NUnit.Framework.Assert;
 
 namespace Domain.Test.CategoryTests
 {
@@ -19,7 +18,7 @@ namespace Domain.Test.CategoryTests
             _category = new Category();
         }
 
-        [Test]
+        [Fact]
         public void TestSetAndGetId()
         {
             _category.Id = Id;
@@ -27,7 +26,7 @@ namespace Domain.Test.CategoryTests
             Assert.That(_category.Id, Is.EqualTo(Id));
         }
 
-        [Test]
+        [Fact]
         public void TestSetAndGetDescription()
         {
             _category.Description = Description;
