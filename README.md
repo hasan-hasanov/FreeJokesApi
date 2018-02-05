@@ -111,7 +111,7 @@ The joke json file has the following format:
     {
       "id": "GUID without the hyphens",
       "description": "Your hilarious joke",
-      "categoryId": "CategoryId from Categories.json"
+      "categoryId": "Id from Categories.json"
     },
 ```
 
