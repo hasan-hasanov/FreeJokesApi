@@ -5,11 +5,15 @@ VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeJokesApi", "FreeJokesApi\FreeJokesApi.csproj", "{22973DB8-4E4B-4BAB-965B-56DAD367195A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{38336211-3ADB-4A66-8FDA-EE3E0735D0CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{A73A7C20-D103-414A-A969-49664A979DBE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{A73A7C20-D103-414A-A969-49664A979DBE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistence", "Persistence\Persistence.csproj", "{969A945E-3F16-4292-8DEA-65BD216EA617}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{969A945E-3F16-4292-8DEA-65BD216EA617}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{39DDF6BD-4E88-44C8-B669-93AF9EB0A273}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.Test", "Domain.Test\Domain.Test.csproj", "{C3DE161D-142A-4932-A778-C0F16F247F52}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,9 +37,16 @@ Global
 		{969A945E-3F16-4292-8DEA-65BD216EA617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{969A945E-3F16-4292-8DEA-65BD216EA617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{969A945E-3F16-4292-8DEA-65BD216EA617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3DE161D-142A-4932-A778-C0F16F247F52}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3DE161D-142A-4932-A778-C0F16F247F52}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3DE161D-142A-4932-A778-C0F16F247F52}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3DE161D-142A-4932-A778-C0F16F247F52}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C3DE161D-142A-4932-A778-C0F16F247F52} = {39DDF6BD-4E88-44C8-B669-93AF9EB0A273}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E84D54EB-D62E-4D92-AE49-03553A1D1ACE}
