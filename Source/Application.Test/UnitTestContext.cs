@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application.Abstract;
+using Application.Categories.Models;
+using Application.Jokes.Models;
 using Domain.Entities;
 using Moq;
 
@@ -13,7 +15,11 @@ namespace Application.Test
     {
         public List<Category> Categories { get; set; }
 
+        public List<CategoryModel> CategoryModels { get; set; }
+
         public List<Joke> Jokes { get; set; }
+
+        public List<JokeModel> JokeModels { get; set; }
 
         public Mock<IJokeService> JokeService { get; set; }
 
@@ -21,6 +27,9 @@ namespace Application.Test
         {
             Categories = GetCategories();
             Jokes = GetJokes();
+
+            CategoryModels = GetCategoryModels();
+            JokeModels = GetJokeModels();
 
             JokeService = new Mock<IJokeService>();
 
@@ -97,6 +106,25 @@ namespace Application.Test
                     CategoryId = 2
                 }
             };
+        }
+
+        private List<CategoryModel> GetCategoryModels()
+        {
+            return GetCategories().Select(c => new CategoryModel()
+            {
+                Id = c.Id,
+                Name = c.Description
+            }).ToList();
+        }
+
+        private List<JokeModel> GetJokeModels()
+        {
+            return GetJokes().Select(j => new JokeModel()
+            {
+                Id = j.Id,
+                Description = j.Description,
+                Category = Categories.First(c => c.Id == j.CategoryId).Description
+            }).ToList();
         }
     }
 }
