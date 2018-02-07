@@ -4,7 +4,7 @@ using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Application.Categories.Queries.GetAllCategoriesQuery
+namespace Application.Categories.Queries.GetAllCategories
 {
     public class GetAllCategoriesQuery : IGetAllCategoriesQuery
     {

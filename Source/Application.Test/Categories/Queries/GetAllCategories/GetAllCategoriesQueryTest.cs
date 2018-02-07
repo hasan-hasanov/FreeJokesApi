@@ -1,12 +1,12 @@
 ﻿using Application.Categories.Models;
-using Application.Categories.Queries.GetAllCategoriesQuery;
+using Application.Categories.Queries.GetAllCategories;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System.Collections.Generic;
 using Assert = NUnit.Framework.Assert;
 
-namespace Application.Test.Categories.Queries.GetAllCategoriesQueryTest
+namespace Application.Test.Categories.Queries.GetAllCategories
 {
     [TestClass]
     public class GetAllCategoriesQueryTest

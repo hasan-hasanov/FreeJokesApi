@@ -1,5 +1,5 @@
 ﻿using Application.Abstract;
-using Application.Categories.Queries.GetAllCategoriesQuery;
+using Application.Categories.Queries.GetAllCategories;
 using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
 using Application.Jokes.Queries.GetAllJokes;
 using Application.Jokes.Queries.GetAllJokes.Abstract;
