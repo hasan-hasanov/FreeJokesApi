@@ -13,14 +13,13 @@ namespace Application.Test.Categories.Models
         private const int Id = 1;
         private const string Name = "Test";
 
-
         public CategoryModelTest()
         {
             _categoryModel = new CategoryModel();
         }
 
         [TestMethod]
-        public void Test_Set_And_Get_Id()
+        public void Test_Set_And_Get_CategoryModel_Id()
         {
             _categoryModel.Id = Id;
 
@@ -28,7 +27,7 @@ namespace Application.Test.Categories.Models
         }
 
         [TestMethod]
-        public void Test_Set_And_Get_Description()
+        public void Test_Set_And_Get_CategoryModel_Description()
         {
             _categoryModel.Name = Name;
 

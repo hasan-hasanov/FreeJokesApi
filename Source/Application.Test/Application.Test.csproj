@@ -71,7 +71,10 @@
     <Compile Include="Categories\Models\CategoryModelTest.cs" />
     <Compile Include="Categories\Queries\GetAllCategories\GetAllCategoriesQueryTest.cs" />
     <Compile Include="Jokes\Models\JokeModelTest.cs" />
+    <Compile Include="Jokes\Queries\GetAllJokesByCategory\GetAllJokesByCategoryQueryTest.cs" />
     <Compile Include="Jokes\Queries\GetAllJokes\GetAllJokesQueryTest.cs" />
+    <Compile Include="Jokes\Queries\GetJokeById\GetJokeByIdQueryTest.cs" />
+    <Compile Include="Jokes\Queries\GetJokesByCategoryAndCount\GetJokesByCategoryAndCountQueryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestContext.cs" />
   </ItemGroup>

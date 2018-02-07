@@ -1,6 +1,6 @@
 ﻿using Application.Abstract;
 using Application.Jokes.Models;
-using Application.Jokes.Queries.GetJokeById.Abstrac;
+using Application.Jokes.Queries.GetJokeById.Abstract;
 using Domain.Entities;
 using System.Linq;
 

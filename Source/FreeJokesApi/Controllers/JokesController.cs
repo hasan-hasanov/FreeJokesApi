@@ -1,7 +1,7 @@
 ﻿using Application.Jokes.Models;
 using Application.Jokes.Queries.GetAllJokes.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
-using Application.Jokes.Queries.GetJokeById.Abstrac;
+using Application.Jokes.Queries.GetJokeById.Abstract;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount.Abstract;
 using Application.Jokes.Queries.GetRandomJoke.Abstract;

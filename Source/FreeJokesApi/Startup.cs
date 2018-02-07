@@ -6,7 +6,7 @@ using Application.Jokes.Queries.GetAllJokes.Abstract;
 using Application.Jokes.Queries.GetAllJokesByCategory;
 using Application.Jokes.Queries.GetAllJokesByCategory.Abstract;
 using Application.Jokes.Queries.GetJokeById;
-using Application.Jokes.Queries.GetJokeById.Abstrac;
+using Application.Jokes.Queries.GetJokeById.Abstract;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount;
 using Application.Jokes.Queries.GetJokesByCategoryAndCount.Abstract;
 using Application.Jokes.Queries.GetJokesByCount;

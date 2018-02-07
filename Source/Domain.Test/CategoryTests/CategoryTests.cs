@@ -13,14 +13,13 @@ namespace Domain.Test.CategoryTests
         private const int Id = 1;
         private const string Description = "Test";
 
-
         public CategoryTests()
         {
             _category = new Category();
         }
 
         [TestMethod]
-        public void Test_Set_And_Get_Id()
+        public void Test_Set_And_Get_Category_Id()
         {
             _category.Id = Id;
 
@@ -28,7 +27,7 @@ namespace Domain.Test.CategoryTests
         }
 
         [TestMethod]
-        public void Test_Set_And_Get_Description()
+        public void Test_Set_And_Get_Category_Description()
         {
             _category.Description = Description;
 
