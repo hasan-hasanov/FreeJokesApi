@@ -76,6 +76,8 @@
     <Compile Include="Jokes\Queries\GetJokeById\GetJokeByIdQueryTest.cs" />
     <Compile Include="Jokes\Queries\GetJokesByCategoryAndCount\GetJokesByCategoryAndCountQueryTest.cs" />
     <Compile Include="Jokes\Queries\GetJokesByCount\GetJokesByCountQueryTest.cs" />
+    <Compile Include="Jokes\Queries\GetRandomJokeByCategory\GetRandomJokeByCategoryQueryTest.cs" />
+    <Compile Include="Jokes\Queries\GetRandomJoke\GetRandomJokeQueryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UnitTestContext.cs" />
   </ItemGroup>

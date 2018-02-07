@@ -25,9 +25,9 @@ namespace Application.Jokes.Queries.GetRandomJokeByCategory
                         Description = joke.Description,
                         Category = category.Description
                     })
-                     .Where(j => j.Category.Trim().ToLower() == categoryName.Trim().ToLower())
+                     .Where(j => string.Equals(j.Category.Trim(), categoryName?.Trim(), StringComparison.CurrentCultureIgnoreCase))
                      .OrderBy(j => Guid.NewGuid())
-                     .First();
+                     .FirstOrDefault();
         }
     }
 }
