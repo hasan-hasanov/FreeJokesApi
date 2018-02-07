@@ -20,7 +20,7 @@ namespace Domain.Test.CategoryTests
         }
 
         [TestMethod]
-        public void TestSetAndGetId()
+        public void Test_Set_And_Get_Id()
         {
             _category.Id = Id;
 
@@ -28,7 +28,7 @@ namespace Domain.Test.CategoryTests
         }
 
         [TestMethod]
-        public void TestSetAndGetDescription()
+        public void Test_Set_And_Get_Description()
         {
             _category.Description = Description;
 

@@ -18,7 +18,7 @@ namespace Domain.Test.JokeTests
         }
 
         [Test]
-        public void TestSetAndGetId()
+        public void Test_Set_And_Get_Id()
         {
             _joke.Id = Id;
 
@@ -26,7 +26,7 @@ namespace Domain.Test.JokeTests
         }
 
         [Test]
-        public void TestSetAndGetDescription()
+        public void Test_Set_And_Get_Description()
         {
             _joke.Description = Description;
 
@@ -34,7 +34,7 @@ namespace Domain.Test.JokeTests
         }
 
         [Test]
-        public void TestSetAndGetCategoryId()
+        public void Test_Set_And_Get_Category_Id()
         {
             _joke.CategoryId = CategoryId;
 

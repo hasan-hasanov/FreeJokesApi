@@ -25,7 +25,7 @@ namespace Application.Test.Jokes.Models
         }
 
         [TestMethod]
-        public void TestSetAndGetId()
+        public void Test_Set_And_Get_Id()
         {
             _jokeModel.Id = Id;
 
@@ -33,7 +33,7 @@ namespace Application.Test.Jokes.Models
         }
 
         [TestMethod]
-        public void TestSetAndGetDescription()
+        public void Test_Set_And_Get_Description()
         {
             _jokeModel.Description = Description;
 
@@ -41,7 +41,7 @@ namespace Application.Test.Jokes.Models
         }
 
         [TestMethod]
-        public void TestSetAndGetCategoryId()
+        public void Test_Set_And_Get_Category_Id()
         {
             _jokeModel.Category = Category;
 

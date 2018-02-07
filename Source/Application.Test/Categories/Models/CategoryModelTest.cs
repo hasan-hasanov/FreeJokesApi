@@ -20,7 +20,7 @@ namespace Application.Test.Categories.Models
         }
 
         [TestMethod]
-        public void TestSetAndGetId()
+        public void Test_Set_And_Get_Id()
         {
             _categoryModel.Id = Id;
 
@@ -28,7 +28,7 @@ namespace Application.Test.Categories.Models
         }
 
         [TestMethod]
-        public void TestSetAndGetDescription()
+        public void Test_Set_And_Get_Description()
         {
             _categoryModel.Name = Name;
 
