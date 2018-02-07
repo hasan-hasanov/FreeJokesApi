@@ -12,13 +12,12 @@ namespace Application.Test.Jokes.Queries.GetJokesByCategoryAndCount
     [TestClass]
     public class GetJokesByCategoryAndCountQueryTest
     {
-        private readonly UnitTestContext _context;
         private readonly GetJokesByCategoryAndCountQuery _getJokesByCategoryAndCountQuery;
 
         public GetJokesByCategoryAndCountQueryTest()
         {
-            _context = new UnitTestContext();
-            _getJokesByCategoryAndCountQuery = new GetJokesByCategoryAndCountQuery(_context.JokeService.Object);
+            UnitTestContext context = new UnitTestContext();
+            _getJokesByCategoryAndCountQuery = new GetJokesByCategoryAndCountQuery(context.JokeService.Object);
         }
 
         [DataTestMethod]
