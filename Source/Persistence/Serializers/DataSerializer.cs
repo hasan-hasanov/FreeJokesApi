@@ -5,6 +5,7 @@ using Persistence.Serializers.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.IO.Abstractions;
 
 namespace Persistence.Serializers
 {
@@ -12,16 +13,19 @@ namespace Persistence.Serializers
     {
         private readonly string _jokesLocation;
         private readonly string _categoriesLocation;
+        private readonly IFileSystem _fileSystem;
 
-        public DataSerializer()
+        public DataSerializer(IFileSystem fileSystem)
         {
             _jokesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Jokes.json";
             _categoriesLocation = $"{AppDomain.CurrentDomain.BaseDirectory}Data\\Categories.json";
+
+            _fileSystem = fileSystem;
         }
 
         public IEnumerable<Joke> SerializeJokes()
         {
-            using (StreamReader file = File.OpenText(_jokesLocation))
+            using (StreamReader file = _fileSystem.File.OpenText(_jokesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 JokeSerializeModel jokeSerializeModel = (JokeSerializeModel)serializer.Deserialize(file, typeof(JokeSerializeModel));
@@ -32,7 +36,7 @@ namespace Persistence.Serializers
 
         public IEnumerable<Category> SerializerCategories()
         {
-            using (StreamReader file = File.OpenText(_categoriesLocation))
+            using (StreamReader file = _fileSystem.File.OpenText(_categoriesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
                 CategorySerializerModel categorySerializeModel = (CategorySerializerModel)serializer.Deserialize(file, typeof(CategorySerializerModel));

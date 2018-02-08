@@ -25,6 +25,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Persistence;
+using Persistence.Extensions;
 using Persistence.Serializers;
 using Persistence.Serializers.Abstract;
 using Serilog;
@@ -66,6 +67,8 @@ namespace FreeJokesApi
             services.AddScoped<IExceptionBuilder, ExceptionBuilder>();
             services.AddScoped<IJsonExceptionMiddleware, JsonExceptionMiddleware>();
             services.AddScoped<JsonSerializer>();
+
+            services.RegisterPersistenceServices();
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IJsonExceptionMiddleware jsonExceptionMiddleware)
