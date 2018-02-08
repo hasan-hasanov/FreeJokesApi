@@ -20,3 +20,5 @@
 /Source/packages
 /Source/Domain.Test/Domain.Test.csproj.user
 /Source/Application.Test/bin/Debug
+/Source/Persistence.Test/bin/Debug
+/Source/Persistence.Test/obj/Debug
