@@ -28,7 +28,7 @@ namespace Persistence.Serializers
             using (StreamReader file = _fileSystem.File.OpenText(_jokesLocation))
             {
                 JsonSerializer serializer = new JsonSerializer();
-                JokeSerializeModel jokeSerializeModel = (JokeSerializeModel)serializer.Deserialize(file, typeof(JokeSerializeModel));
+                JokeSerializerModel jokeSerializeModel = (JokeSerializerModel)serializer.Deserialize(file, typeof(JokeSerializerModel));
 
                 return jokeSerializeModel.Jokes;
             }

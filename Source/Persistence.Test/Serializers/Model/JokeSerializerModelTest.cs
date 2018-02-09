@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Domain.Entities;
+﻿using Domain.Entities;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using Persistence.Serializers.Model;
+using System.Collections.Generic;
 using Assert = NUnit.Framework.Assert;
 
 namespace Persistence.Test.Serializers.Model
@@ -16,12 +12,12 @@ namespace Persistence.Test.Serializers.Model
     public class JokeSerializerModelTest
     {
         private readonly List<Joke> _jokes;
-        private readonly JokeSerializeModel _jokeSerializerModel;
+        private readonly JokeSerializerModel _jokeSerializerModel;
 
         public JokeSerializerModelTest()
         {
             _jokes = BuildJokesMock();
-            _jokeSerializerModel = new JokeSerializeModel();
+            _jokeSerializerModel = new JokeSerializerModel();
         }
 
         [TestMethod]

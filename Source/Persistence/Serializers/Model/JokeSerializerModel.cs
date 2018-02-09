@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Persistence.Serializers.Model
 {
-    public class JokeSerializeModel
+    public class JokeSerializerModel
     {
         public List<Joke> Jokes { get; set; }
     }
