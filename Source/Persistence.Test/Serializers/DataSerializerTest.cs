@@ -1,12 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Persistence.Serializers;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO.Abstractions.TestingHelpers;
-using Domain.Entities;
+﻿using Domain.Entities;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using NUnit.Framework;
+using Persistence.Serializers;
+using System;
+using System.Collections.Generic;
+using System.IO.Abstractions.TestingHelpers;
 using Assert = NUnit.Framework.Assert;
 
 namespace Persistence.Test.Serializers
