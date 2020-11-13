@@ -1,26 +1,14 @@
-﻿using Application.Categories.Models;
-using Application.Categories.Queries.GetAllCategoriesQuery.Abstract;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace FreeJokesApi.Controllers
 {
     [Route("api/[controller]")]
     public class CategoriesController : Controller
     {
-        private readonly IGetAllCategoriesQuery _getAllCategoriesQuery;
-
-        public CategoriesController(IGetAllCategoriesQuery getAllCategoriesQuery)
-        {
-            _getAllCategoriesQuery = getAllCategoriesQuery;
-        }
-
         [HttpGet]
-        public JsonResult GetAll()
+        public IActionResult GetAll()
         {
-            List<CategoryModel> categories = _getAllCategoriesQuery.Execute();
-
-            return Json(categories);
+            return this.Ok();
         }
     }
 }
