@@ -1,26 +1,34 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using FreeJokesApi.Configuration;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace FreeJokesApi
 {
     public class Startup
     {
+        private readonly IConfigurationRoot _configuration;
+
         public Startup()
         {
+            _configuration = new ConfigurationBuilder()
+                .AddJsonFile("appSettings.json")
+                .AddEnvironmentVariables()
+                .Build();
         }
 
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc();
+            AppConfiguration.AddMvc(services);
+            AppConfiguration.AddDependencyResolvers(services, _configuration);
+            AppConfiguration.AddMediatR(services);
         }
 
         public void Configure(IApplicationBuilder app)
         {
-            app.UseRouting();
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            AppConfiguration.UseHttpsRedirection(app);
+            AppConfiguration.UseRouting(app);
+            AppConfiguration.UseEndpoints(app);
         }
     }
 }
