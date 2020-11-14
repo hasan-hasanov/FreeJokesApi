@@ -4,5 +4,5 @@ using System.Collections.Generic;
 
 namespace Services.Models.RequestModels
 {
-    public class GetAllCategoriesRequestModel : IRequest<IList<CategoryResponseModel>> { }
+    public class GetAllFlagsRequestModel : IRequest<IList<FlagResponseModel>> { }
 }

@@ -20,7 +20,7 @@ namespace FreeJokesApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            IList<CategoriesResponseModel> response = await _mediator.Send(new GetAllCategoriesRequestModel());
+            IList<CategoryResponseModel> response = await _mediator.Send(new GetAllCategoriesRequestModel());
             return this.Ok(response);
         }
     }

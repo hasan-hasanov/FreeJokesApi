@@ -7,24 +7,24 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Adapter.Database.Queries.GetAllCategories
+namespace Adapter.Database.Queries.GetAllFlags
 {
-    public class GetAllCategoriesQueryHandler : IQueryHandler<GetAllCategoriesQuery, IList<Category>>
+    public class GetAllFlagsQueryHandler : IQueryHandler<GetAllFlagsQuery, IList<Flag>>
     {
-        private readonly ILogger<GetAllCategoriesQueryHandler> _logger;
+        private readonly ILogger<GetAllFlagsQueryHandler> _logger;
         private readonly JokesContext _context;
 
-        public GetAllCategoriesQueryHandler(
-            ILogger<GetAllCategoriesQueryHandler> logger,
+        public GetAllFlagsQueryHandler(
+            ILogger<GetAllFlagsQueryHandler> logger,
             JokesContext context)
         {
             _logger = logger;
             _context = context;
         }
 
-        public async Task<IList<Category>> HandleAsync(GetAllCategoriesQuery query, CancellationToken cancellationToken = default)
+        public async Task<IList<Flag>> HandleAsync(GetAllFlagsQuery query, CancellationToken cancellationToken = default)
         {
-            var dbQuery = _context.Categories;
+            var dbQuery = _context.Flags;
             _logger.LogDebug(dbQuery.ToQueryString());
 
             return await dbQuery.ToListAsync(cancellationToken);

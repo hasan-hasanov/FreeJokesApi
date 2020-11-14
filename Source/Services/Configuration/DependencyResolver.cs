@@ -1,5 +1,6 @@
 ﻿using Adapter.Database.Contexts;
 using Adapter.Database.Queries.GetAllCategories;
+using Adapter.Database.Queries.GetAllFlags;
 using Common.Constants;
 using Core.Entities;
 using Core.Queries;
@@ -17,6 +18,7 @@ namespace Services.Configuration
             services.AddDbContext<JokesContext>(options => options.UseSqlServer(configuration.GetConnectionString(GeneralConstants.JokesApiDatabase)));
 
             services.AddScoped<IQueryHandler<GetAllCategoriesQuery, IList<Category>>, GetAllCategoriesQueryHandler>();
+            services.AddScoped<IQueryHandler<GetAllFlagsQuery, IList<Flag>>, GetAllFlagsQueryHandler>();
 
             return services;
         }
