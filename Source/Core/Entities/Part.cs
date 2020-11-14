@@ -1,6 +1,6 @@
 ﻿namespace Core.Entities
 {
-    public class JokePart
+    public class Part
     {
         public long Id { get; set; }
 
@@ -8,7 +8,7 @@
 
         public int Order { get; set; }
 
-        public string Part { get; set; }
+        public string JokePart { get; set; }
 
         public Joke Joke { get; set; }
     }

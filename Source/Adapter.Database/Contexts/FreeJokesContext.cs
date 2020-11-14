@@ -1,4 +1,5 @@
 ﻿using Adapter.Database.Configurations;
+using Adapter.Database.Contexts.Seed;
 using Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,9 +20,9 @@ namespace Adapter.Database.Contexts
 
         public DbSet<JokeFlag> JokeFlags { get; set; }
 
-        public DbSet<JokePart> JokeParts { get; set; }
+        public DbSet<Part> Parts { get; set; }
 
-        public DbSet<JokeRating> JokeRatings { get; set; }
+        public DbSet<Rating> Ratings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -29,8 +30,11 @@ namespace Adapter.Database.Contexts
             modelBuilder.ApplyConfiguration(new FlagConfig());
             modelBuilder.ApplyConfiguration(new JokeConfig());
             modelBuilder.ApplyConfiguration(new JokeFlagConfig());
-            modelBuilder.ApplyConfiguration(new JokePartConfig());
-            modelBuilder.ApplyConfiguration(new JokeRatingConfig());
+            modelBuilder.ApplyConfiguration(new PartConfig());
+            modelBuilder.ApplyConfiguration(new RatingConfig());
+
+            modelBuilder.Entity<Category>().HasData(new CategorySeeds().Categories);
+            modelBuilder.Entity<Flag>().HasData(new FlagSeeds().Flags);
         }
     }
 }

@@ -2,11 +2,11 @@
 
 namespace Core.Entities
 {
-    public class JokeRating
+    public class Rating
     {
         public long Id { get; set; }
 
-        public float Rating { get; set; }
+        public float JokeRating { get; set; }
 
         public long JokeId { get; set; }
 
