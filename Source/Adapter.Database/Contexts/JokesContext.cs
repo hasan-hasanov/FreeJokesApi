@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Adapter.Database.Contexts
 {
-    public class FreeJokesContext : DbContext
+    public class JokesContext : DbContext
     {
-        public FreeJokesContext(DbContextOptions<FreeJokesContext> options)
+        public JokesContext(DbContextOptions<JokesContext> options)
             : base(options)
         {
         }

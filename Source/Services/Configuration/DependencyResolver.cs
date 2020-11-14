@@ -1,7 +1,12 @@
 ﻿using Adapter.Database.Contexts;
+using Adapter.Database.Queries.GetAllCategories;
+using Common.Constants;
+using Core.Entities;
+using Core.Queries;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace Services.Configuration
 {
@@ -9,7 +14,9 @@ namespace Services.Configuration
     {
         public static IServiceCollection RegisterTypes(this IServiceCollection services, IConfigurationRoot configuration)
         {
-            services.AddDbContext<FreeJokesContext>(options => options.UseSqlServer(configuration.GetConnectionString("")));
+            services.AddDbContext<JokesContext>(options => options.UseSqlServer(configuration.GetConnectionString(GeneralConstants.JokesApiDatabase)));
+
+            services.AddScoped<IQueryHandler<GetAllCategoriesQuery, IList<Category>>, GetAllCategoriesQueryHandler>();
 
             return services;
         }

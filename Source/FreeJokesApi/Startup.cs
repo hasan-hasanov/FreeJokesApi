@@ -12,7 +12,8 @@ namespace FreeJokesApi
         public Startup()
         {
             _configuration = new ConfigurationBuilder()
-                .AddJsonFile("appSettings.json")
+                .AddJsonFile("appsettings.Development.json", optional: true)
+                .AddJsonFile("appSettings.json", optional: true)
                 .AddEnvironmentVariables()
                 .Build();
         }
