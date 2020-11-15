@@ -22,11 +22,13 @@ namespace FreeJokesApi
         {
             AppConfiguration.AddMvc(services);
             AppConfiguration.AddDependencyResolvers(services, _configuration);
+            AppConfiguration.ConfigureSwaggerServices(services);
             AppConfiguration.AddMediatR(services);
         }
 
         public void Configure(IApplicationBuilder app)
         {
+            AppConfiguration.ConfigureSwagger(app);
             AppConfiguration.UseHttpsRedirection(app);
             AppConfiguration.UseRouting(app);
             AppConfiguration.UseEndpoints(app);

@@ -2,7 +2,7 @@
 
 namespace FreeJokesApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/jokes")]
     public class JokesController : Controller
     {
         [HttpGet]
