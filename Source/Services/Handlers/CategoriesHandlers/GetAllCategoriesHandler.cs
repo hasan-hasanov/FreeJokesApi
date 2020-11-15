@@ -22,7 +22,7 @@ namespace Services.Handlers.CategoriesHandlers
 
         public async Task<IList<CategoryResponseModel>> Handle(GetAllCategoriesRequestModel request, CancellationToken cancellationToken)
         {
-            IList<Category> allCategories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery());
+            IList<Category> allCategories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery(), cancellationToken);
             return allCategories.Select(c => new CategoryResponseModel(c)).ToList();
         }
     }

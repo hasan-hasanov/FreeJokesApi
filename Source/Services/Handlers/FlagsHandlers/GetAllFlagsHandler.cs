@@ -22,7 +22,7 @@ namespace Services.Handlers.FlagsHandlers
 
         public async Task<IList<FlagResponseModel>> Handle(GetAllFlagsRequestModel request, CancellationToken cancellationToken)
         {
-            IList<Flag> allFlags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery());
+            IList<Flag> allFlags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery(), cancellationToken);
             return allFlags.Select(c => new FlagResponseModel(c)).ToList();
         }
     }

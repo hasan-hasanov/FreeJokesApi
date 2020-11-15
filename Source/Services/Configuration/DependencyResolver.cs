@@ -4,9 +4,12 @@ using Adapter.Database.Queries.GetAllFlags;
 using Common.Constants;
 using Core.Entities;
 using Core.Queries;
+using Core.Validations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services.Models.RequestModels;
+using Services.Validations;
 using System.Collections.Generic;
 
 namespace Services.Configuration
@@ -19,6 +22,8 @@ namespace Services.Configuration
 
             services.AddScoped<IQueryHandler<GetAllCategoriesQuery, IList<Category>>, GetAllCategoriesQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllFlagsQuery, IList<Flag>>, GetAllFlagsQueryHandler>();
+
+            services.AddScoped<IValidation<JokesFilter>, JokesFilterValidator>();
 
             return services;
         }
