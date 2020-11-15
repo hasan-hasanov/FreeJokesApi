@@ -18,10 +18,17 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetFilteredJokes(JokesFilter filter)
+        public async Task<IActionResult> GetFilteredJokes(JokesFilterRequestModel request)
         {
-            IList<JokeResponseModel> response = await _mediator.Send(filter);
+            IList<JokeResponseModel> response = await _mediator.Send(request);
             return Ok(response);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> PublishJoke(PublishJokeRequestModel request)
+        {
+            await _mediator.Send(request);
+            return NoContent();
         }
     }
 }

@@ -5,9 +5,9 @@ using System.Collections.Generic;
 
 namespace Services.Models.RequestModels
 {
-    public class JokesFilter : IRequest<IList<JokeResponseModel>>
+    public class JokesFilterRequestModel : IRequest<IList<JokeResponseModel>>
     {
-        public JokesFilter()
+        public JokesFilterRequestModel()
         {
             RatingMin = 0;
             RatingMax = 10;

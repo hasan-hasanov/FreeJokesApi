@@ -23,7 +23,8 @@ namespace Services.Configuration
             services.AddScoped<IQueryHandler<GetAllCategoriesQuery, IList<Category>>, GetAllCategoriesQueryHandler>();
             services.AddScoped<IQueryHandler<GetAllFlagsQuery, IList<Flag>>, GetAllFlagsQueryHandler>();
 
-            services.AddScoped<IValidation<JokesFilter>, JokesFilterValidator>();
+            services.AddScoped<IValidation<JokesFilterRequestModel>, JokesFilterValidator>();
+            services.AddScoped<IValidation<PublishJokeRequestModel>, PublishJokesValidator>();
 
             return services;
         }

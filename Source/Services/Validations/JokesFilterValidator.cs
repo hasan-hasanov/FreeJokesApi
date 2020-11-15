@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Services.Validations
 {
-    public class JokesFilterValidator : IValidation<JokesFilter>
+    public class JokesFilterValidator : IValidation<JokesFilterRequestModel>
     {
         private readonly IQueryHandler<GetAllFlagsQuery, IList<Flag>> _getAllFlagsQueryHandler;
         private readonly IQueryHandler<GetAllCategoriesQuery, IList<Category>> _getAllCategoriesQueryHandler;
@@ -25,7 +25,7 @@ namespace Services.Validations
             _getAllCategoriesQueryHandler = getAllCategoriesQueryHandler;
         }
 
-        public async Task Validate(JokesFilter model)
+        public async Task Validate(JokesFilterRequestModel model)
         {
             List<string> errorMessages = new List<string>();
 

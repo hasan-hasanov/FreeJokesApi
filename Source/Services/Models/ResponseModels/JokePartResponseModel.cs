@@ -12,6 +12,6 @@ namespace Services.Models.ResponseModels
 
         public string Part { get; }
 
-        public int Order { get; set; }
+        public int Order { get; }
     }
 }
