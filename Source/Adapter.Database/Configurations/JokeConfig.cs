@@ -23,10 +23,10 @@ namespace Adapter.Database.Configurations
                 .WithOne(x => x.Joke)
                 .IsRequired(false);
 
-            builder.HasMany(x => x.JokeParts)
+            builder.HasMany(x => x.Parts)
                 .WithOne(x => x.Joke);
 
-            builder.HasMany(x => x.JokeRatings)
+            builder.HasMany(x => x.Ratings)
                 .WithOne(x => x.Joke)
                 .IsRequired(false);
         }

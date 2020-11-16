@@ -5,15 +5,13 @@ VisualStudioVersion = 16.0.30711.63
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FreeJokesApi", "FreeJokesApi\FreeJokesApi.csproj", "{22973DB8-4E4B-4BAB-965B-56DAD367195A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{39DDF6BD-4E88-44C8-B669-93AF9EB0A273}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{1A272A8A-BFFC-440D-AC67-C624EE27A745}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Adapter.Database", "Adapter.Database\Adapter.Database.csproj", "{E7755BE6-E576-46C2-9843-58A5D0756749}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{1AF920E1-7C09-4E57-BBAA-D7C5D4B85756}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{50839870-8995-44E9-A8B6-04875BCE8345}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "Common\Common.csproj", "{50839870-8995-44E9-A8B6-04875BCE8345}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

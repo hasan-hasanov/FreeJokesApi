@@ -11,7 +11,7 @@ namespace Services.Models.ResponseModels
             Id = joke.Id;
             Category = joke.Category.Name;
             Rating = rating;
-            Parts = joke.JokeParts.Select(c => new JokePartResponseModel(c)).ToList();
+            Parts = joke.Parts.Select(c => new JokePartResponseModel(c)).ToList();
             JokeFlags = joke.JokeFlags?.Select(c => c.Flag.Name).ToList();
         }
 

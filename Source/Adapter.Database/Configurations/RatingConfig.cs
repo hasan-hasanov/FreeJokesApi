@@ -20,7 +20,7 @@ namespace Adapter.Database.Configurations
                 .IsRequired();
 
             builder.HasOne(x => x.Joke)
-                .WithMany(x => x.JokeRatings);
+                .WithMany(x => x.Ratings);
         }
     }
 }

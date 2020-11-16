@@ -13,10 +13,10 @@ namespace Core.Entities
 
         public Category Category { get; set; }
 
-        public ICollection<Part> JokeParts { get; set; }
+        public ICollection<Part> Parts { get; set; }
 
         public ICollection<JokeFlag> JokeFlags { get; set; }
 
-        public ICollection<Rating> JokeRatings { get; set; }
+        public ICollection<Rating> Ratings { get; set; }
     }
 }

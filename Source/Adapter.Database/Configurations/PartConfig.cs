@@ -21,7 +21,7 @@ namespace Adapter.Database.Configurations
                 .HasMaxLength(1000);
 
             builder.HasOne(x => x.Joke)
-                .WithMany(x => x.JokeParts);
+                .WithMany(x => x.Parts);
         }
     }
 }
