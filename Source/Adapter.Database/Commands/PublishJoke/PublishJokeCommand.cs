@@ -1,5 +1,7 @@
 ﻿using Core.Commands;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Adapter.Database.Commands.PublishJoke
 {
@@ -10,6 +12,16 @@ namespace Adapter.Database.Commands.PublishJoke
             IList<string> parts,
             IList<string> flags)
         {
+            if (string.IsNullOrWhiteSpace(category))
+            {
+                throw new ArgumentException(nameof(category));
+            }
+
+            if (parts == null || parts.Any())
+            {
+                throw new ArgumentException(nameof(parts));
+            }
+
             Category = category;
             Parts = parts;
             Flags = flags;
