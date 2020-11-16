@@ -2,15 +2,15 @@
 using Core.Queries;
 using System.Collections.Generic;
 
-namespace Adapter.Database.Queries.GetFlagsByName
+namespace Adapter.Database.Queries.GetFlagsByNames
 {
     public class GetFlagsByNamesQuery : IQuery<IList<Flag>>
     {
-        public GetFlagsByNamesQuery(List<string> flagNames)
+        public GetFlagsByNamesQuery(IList<string> flagNames)
         {
             FlagNames = flagNames;
         }
 
-        public List<string> FlagNames { get; }
+        public IList<string> FlagNames { get; }
     }
 }

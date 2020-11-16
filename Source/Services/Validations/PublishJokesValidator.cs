@@ -28,9 +28,9 @@ namespace Services.Validations
             List<string> errorMessages = new List<string>();
 
             IList<Category> categories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery());
-            if (!categories.Any(c => c.Id == model.CategoryId))
+            if (!categories.Any(c => c.Name.ToLower() == model.Category.ToLower()))
             {
-                errorMessages.Add($"Category with id {model.CategoryId} could not be found");
+                errorMessages.Add($"Category with name {model.Category} could not be found");
             }
 
             if (model.Parts == null || !model.Parts.Any())
@@ -54,9 +54,9 @@ namespace Services.Validations
                 IList<Flag> flags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery());
                 foreach (var flag in model.Flags)
                 {
-                    if (!flags.Any(f => f.Id == flag))
+                    if (!flags.Any(f => f.Name.ToLower() == flag.ToLower()))
                     {
-                        errorMessages.Add($"Flag with id {flag} could not be found");
+                        errorMessages.Add($"Flag with name {flag} could not be found");
                     }
                 }
             }

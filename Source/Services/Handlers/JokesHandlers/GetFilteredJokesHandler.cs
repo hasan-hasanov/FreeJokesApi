@@ -1,6 +1,6 @@
-﻿using Adapter.Database.Queries.GetAllCategoriesByName;
+﻿using Adapter.Database.Queries.GetAllCategoriesByNames;
 using Adapter.Database.Queries.GetFilteredJokes;
-using Adapter.Database.Queries.GetFlagsByName;
+using Adapter.Database.Queries.GetFlagsByNames;
 using Core.Entities;
 using Core.Queries;
 using Core.Validations;
@@ -18,13 +18,13 @@ namespace Services.Handlers.JokesHandlers
     {
         private readonly IValidation<JokesFilterRequestModel> _jokesFilterValidation;
         private readonly IQueryHandler<GetFlagsByNamesQuery, IList<Flag>> _getFlagsByNamesQuery;
-        private readonly IQueryHandler<GetAllCategoriesByNamesQuery, IList<Category>> _getAllCategoriesByNamesQuery;
+        private readonly IQueryHandler<GetCategoriesByNamesQuery, IList<Category>> _getAllCategoriesByNamesQuery;
         private readonly IQueryHandler<GetFilteredJokesQuery, IList<Joke>> _getFilteredJokesQueryHandler;
 
         public GetFilteredJokesHandler(
             IValidation<JokesFilterRequestModel> jokesFilterValidation,
             IQueryHandler<GetFlagsByNamesQuery, IList<Flag>> _getFlagsByNamesQuery,
-            IQueryHandler<GetAllCategoriesByNamesQuery, IList<Category>> getAllCategoriesByNamesQuery,
+            IQueryHandler<GetCategoriesByNamesQuery, IList<Category>> getAllCategoriesByNamesQuery,
             IQueryHandler<GetFilteredJokesQuery, IList<Joke>> getFilteredJokesQueryHandler)
         {
             _jokesFilterValidation = jokesFilterValidation;
@@ -37,7 +37,7 @@ namespace Services.Handlers.JokesHandlers
             await _jokesFilterValidation.Validate(request);
 
             IList<Flag> flags = await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(request.Flags), cancellationToken);
-            IList<Category> categories = await _getAllCategoriesByNamesQuery.HandleAsync(new GetAllCategoriesByNamesQuery(request.Categories), cancellationToken);
+            IList<Category> categories = await _getAllCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(request.Categories), cancellationToken);
 
             IList<long> flagIds = flags.Select(f => f.Id).ToList();
             IList<long> categoryIds = categories.Select(f => f.Id).ToList();

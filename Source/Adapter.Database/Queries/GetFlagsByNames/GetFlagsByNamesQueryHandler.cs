@@ -7,7 +7,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Adapter.Database.Queries.GetFlagsByName
+namespace Adapter.Database.Queries.GetFlagsByNames
 {
     public class GetFlagsByNamesQueryHandler : IQueryHandler<GetFlagsByNamesQuery, IList<Flag>>
     {
