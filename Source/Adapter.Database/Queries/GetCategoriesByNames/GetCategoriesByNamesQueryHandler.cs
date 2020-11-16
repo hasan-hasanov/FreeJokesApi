@@ -20,11 +20,11 @@ namespace Adapter.Database.Queries.GetAllCategoriesByNames
 
         public async Task<IList<Category>> HandleAsync(GetCategoriesByNamesQuery query, CancellationToken cancellationToken = default)
         {
-            // TODO: Fix this with something that EF can translate properly or ditch it.
             var dbQuery = await _context.Categories
+                .Where(c => query.CategoryNames.Contains(c.Name))
                 .ToListAsync(cancellationToken);
 
-            return dbQuery.Where(c => query.CategoryNames.Any(qc => qc.ToLower() == c.Name.ToLower())).ToList();
+            return dbQuery;
         }
     }
 }

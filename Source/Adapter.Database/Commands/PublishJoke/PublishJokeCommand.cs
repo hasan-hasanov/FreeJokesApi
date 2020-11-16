@@ -17,7 +17,7 @@ namespace Adapter.Database.Commands.PublishJoke
                 throw new ArgumentException(nameof(category));
             }
 
-            if (parts == null || parts.Any())
+            if (parts == null || !parts.Any())
             {
                 throw new ArgumentException(nameof(parts));
             }
