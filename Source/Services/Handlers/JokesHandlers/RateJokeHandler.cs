@@ -23,7 +23,7 @@ namespace Services.Handlers.JokesHandlers
 
         protected override async Task Handle(RateJokeRequestModel request, CancellationToken cancellationToken)
         {
-            await _rateJokeValidation.Validate(request);
+            await _rateJokeValidation.Validate(request, cancellationToken);
             await _rateJokeCommandHandler.HandleAsync(new RateJokeCommand(request.JokeId, request.Rating), cancellationToken);
         }
     }

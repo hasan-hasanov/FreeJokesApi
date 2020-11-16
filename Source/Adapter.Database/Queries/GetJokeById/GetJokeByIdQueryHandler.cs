@@ -20,7 +20,7 @@ namespace Adapter.Database.Queries.GetJokeById
         {
             var dbQuery = await _context.Jokes
                 .Include(j => j.Ratings)
-                .FirstOrDefaultAsync(j => j.Id == query.Id);
+                .FirstOrDefaultAsync(j => j.Id == query.Id, cancellationToken);
 
             return dbQuery;
         }

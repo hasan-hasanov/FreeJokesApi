@@ -8,6 +8,7 @@ using Services.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Services.Validations
@@ -25,11 +26,11 @@ namespace Services.Validations
             _getAllFlagsQueryHandler = getAllFlagsQueryHandler;
         }
 
-        public async Task Validate(PublishJokeRequestModel model)
+        public async Task Validate(PublishJokeRequestModel model, CancellationToken cancellationToken = default)
         {
             List<string> errorMessages = new List<string>();
 
-            IList<Category> categories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery());
+            IList<Category> categories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery(), cancellationToken);
             if (!categories.Any(c => c.Name.ToLower() == model.Category.ToLower()))
             {
                 errorMessages.Add($"Category with name {model.Category} could not be found");
@@ -53,7 +54,7 @@ namespace Services.Validations
 
             if (model.Flags != null && model.Flags.Any())
             {
-                IList<Flag> flags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery());
+                IList<Flag> flags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery(), cancellationToken);
                 foreach (var flag in model.Flags)
                 {
                     if (!flags.Any(f => f.Name.ToLower() == flag.ToLower()))

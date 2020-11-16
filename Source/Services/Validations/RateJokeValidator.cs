@@ -7,6 +7,7 @@ using Services.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Services.Validations
@@ -20,11 +21,11 @@ namespace Services.Validations
             _getJokeByIdQuery = getJokeByIdQuery;
         }
 
-        public async Task Validate(RateJokeRequestModel model)
+        public async Task Validate(RateJokeRequestModel model, CancellationToken cancellationToken = default)
         {
             List<string> errorMessages = new List<string>();
 
-            var joke = await _getJokeByIdQuery.HandleAsync(new GetJokeByIdQuery(model.JokeId));
+            var joke = await _getJokeByIdQuery.HandleAsync(new GetJokeByIdQuery(model.JokeId), cancellationToken);
             if (joke == null)
             {
                 errorMessages.Add($"Joke with id {model.JokeId} is not found");

@@ -23,18 +23,19 @@ namespace Services.Handlers.JokesHandlers
 
         public GetFilteredJokesHandler(
             IValidation<JokesFilterRequestModel> jokesFilterValidation,
-            IQueryHandler<GetFlagsByNamesQuery, IList<Flag>> _getFlagsByNamesQuery,
+            IQueryHandler<GetFlagsByNamesQuery, IList<Flag>> getFlagsByNamesQuery,
             IQueryHandler<GetCategoriesByNamesQuery, IList<Category>> getAllCategoriesByNamesQuery,
             IQueryHandler<GetFilteredJokesQuery, IList<Joke>> getFilteredJokesQueryHandler)
         {
             _jokesFilterValidation = jokesFilterValidation;
+            _getFlagsByNamesQuery = getFlagsByNamesQuery;
             _getAllCategoriesByNamesQuery = getAllCategoriesByNamesQuery;
             _getFilteredJokesQueryHandler = getFilteredJokesQueryHandler;
         }
 
         public async Task<IList<JokeResponseModel>> Handle(JokesFilterRequestModel request, CancellationToken cancellationToken)
         {
-            await _jokesFilterValidation.Validate(request);
+            await _jokesFilterValidation.Validate(request, cancellationToken);
 
             IList<Flag> flags = await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(request.Flags), cancellationToken);
             IList<Category> categories = await _getAllCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(request.Categories), cancellationToken);

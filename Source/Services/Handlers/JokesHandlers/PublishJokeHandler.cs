@@ -23,10 +23,8 @@ namespace Services.Handlers.JokesHandlers
 
         protected override async Task Handle(PublishJokeRequestModel request, CancellationToken cancellationToken)
         {
-            await _publishJokeValidation.Validate(request);
-            await _publishJokeCommandHandler.HandleAsync(
-                new PublishJokeCommand(request.Category, request.Parts, request.Flags),
-                cancellationToken);
+            await _publishJokeValidation.Validate(request, cancellationToken);
+            await _publishJokeCommandHandler.HandleAsync(new PublishJokeCommand(request.Category, request.Parts, request.Flags), cancellationToken);
         }
     }
 }

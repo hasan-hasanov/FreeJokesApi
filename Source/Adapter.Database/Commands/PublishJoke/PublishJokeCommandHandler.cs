@@ -30,8 +30,8 @@ namespace Adapter.Database.Commands.PublishJoke
 
         public async Task HandleAsync(PublishJokeCommand command, CancellationToken cancellationToken = default)
         {
-            IList<Flag> flags = command.Flags != null && command.Flags.Any() ? await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(command.Flags)) : null;
-            IList<Category> categories = await _getCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(new List<string> { command.Category }));
+            IList<Flag> flags = command.Flags != null && command.Flags.Any() ? await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(command.Flags), cancellationToken) : null;
+            IList<Category> categories = await _getCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(new List<string> { command.Category }), cancellationToken);
 
             Joke joke = new Joke
             {

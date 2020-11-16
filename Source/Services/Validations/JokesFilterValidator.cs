@@ -8,6 +8,7 @@ using Services.Models.RequestModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Services.Validations
@@ -25,13 +26,13 @@ namespace Services.Validations
             _getAllCategoriesQueryHandler = getAllCategoriesQueryHandler;
         }
 
-        public async Task Validate(JokesFilterRequestModel model)
+        public async Task Validate(JokesFilterRequestModel model, CancellationToken cancellationToken = default)
         {
             List<string> errorMessages = new List<string>();
 
             if (model.Flags != null && model.Flags.Any())
             {
-                IList<Flag> flags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery());
+                IList<Flag> flags = await _getAllFlagsQueryHandler.HandleAsync(new GetAllFlagsQuery(), cancellationToken);
                 foreach (var flag in model.Flags)
                 {
                     if (!flags.Any(f => f.Name.ToLower() == flag.ToLower()))
@@ -43,7 +44,7 @@ namespace Services.Validations
 
             if (model.Categories != null && model.Categories.Any())
             {
-                IList<Category> categories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery());
+                IList<Category> categories = await _getAllCategoriesQueryHandler.HandleAsync(new GetAllCategoriesQuery(), cancellationToken);
                 foreach (var category in model.Categories)
                 {
                     if (!categories.Any(f => f.Name.ToLower() == category.ToLower()))

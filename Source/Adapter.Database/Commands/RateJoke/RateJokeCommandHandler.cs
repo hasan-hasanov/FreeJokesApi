@@ -24,7 +24,7 @@ namespace Adapter.Database.Commands.RateJoke
 
         public async Task HandleAsync(RateJokeCommand command, CancellationToken cancellationToken = default)
         {
-            var joke = await _getJokeByIdQueryHandler.HandleAsync(new GetJokeByIdQuery(command.JokeId));
+            var joke = await _getJokeByIdQueryHandler.HandleAsync(new GetJokeByIdQuery(command.JokeId), cancellationToken);
             joke.Ratings.Add(new Rating()
             {
                 JokeId = command.JokeId,
