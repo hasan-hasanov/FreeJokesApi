@@ -25,7 +25,14 @@ namespace FreeJokesApi.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PublishJoke(PublishJokeRequestModel request)
+        public async Task<IActionResult> PublishJoke([FromBody] PublishJokeRequestModel request)
+        {
+            await _mediator.Send(request);
+            return NoContent();
+        }
+
+        [HttpPost("rate")]
+        public async Task<IActionResult> RateJoke([FromBody] RateJokeRequestModel request)
         {
             await _mediator.Send(request);
             return NoContent();
