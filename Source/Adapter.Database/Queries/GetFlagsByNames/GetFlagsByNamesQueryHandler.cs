@@ -20,11 +20,11 @@ namespace Adapter.Database.Queries.GetFlagsByNames
 
         public async Task<IList<Flag>> HandleAsync(GetFlagsByNamesQuery query, CancellationToken cancellationToken = default)
         {
+            // TODO: Fix this with something that EF can understand or ditch it.
             var dbQuery = await _context.Flags
-                .Where(f => query.FlagNames.Any(q => q.ToLower() == f.Name.ToLower()))
                 .ToListAsync(cancellationToken);
 
-            return dbQuery;
+            return dbQuery.Where(f => query.FlagNames.Any(q => q.ToLower() == f.Name.ToLower())).ToList();
         }
     }
 }

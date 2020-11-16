@@ -30,25 +30,26 @@ namespace Adapter.Database.Commands.PublishJoke
 
         public async Task HandleAsync(PublishJokeCommand command, CancellationToken cancellationToken = default)
         {
-            IList<Flag> flags = await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(command.Flags));
+            IList<Flag> flags = command.Flags != null && command.Flags.Any() ? await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(command.Flags)) : null;
             IList<Category> categories = await _getCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(new List<string> { command.Category }));
 
             Joke joke = new Joke
             {
                 CategoryId = categories.First().Id,
                 CreateDate = DateTime.Now,
-                JokeFlags = flags.Select(f => new JokeFlag()
+                JokeFlags = flags?.Select(f => new JokeFlag()
                 {
                     FlagId = f.Id,
                 }).ToList(),
                 Parts = command.Parts.Select((p, i) => new Part()
                 {
                     JokePart = p,
-                    Order = i
+                    Order = i + 1
                 }).ToList()
             };
 
-            await _context.Jokes.AddAsync(joke);
+            await _context.Jokes.AddAsync(joke, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
         }
     }
 }

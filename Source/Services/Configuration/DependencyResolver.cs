@@ -1,10 +1,12 @@
-﻿using Adapter.Database.Contexts;
+﻿using Adapter.Database.Commands.PublishJoke;
+using Adapter.Database.Contexts;
 using Adapter.Database.Queries.GetAllCategories;
 using Adapter.Database.Queries.GetAllCategoriesByNames;
 using Adapter.Database.Queries.GetAllFlags;
 using Adapter.Database.Queries.GetFilteredJokes;
 using Adapter.Database.Queries.GetFlagsByNames;
 using Common.Constants;
+using Core.Commands;
 using Core.Entities;
 using Core.Queries;
 using Core.Validations;
@@ -28,6 +30,8 @@ namespace Services.Configuration
             services.AddScoped<IQueryHandler<GetFilteredJokesQuery, IList<Joke>>, GetFilteredJokesQueryHandler>();
             services.AddScoped<IQueryHandler<GetFlagsByNamesQuery, IList<Flag>>, GetFlagsByNamesQueryHandler>();
             services.AddScoped<IQueryHandler<GetCategoriesByNamesQuery, IList<Category>>, GetCategoriesByNamesQueryHandler>();
+
+            services.AddScoped<ICommandHandler<PublishJokeCommand>, PublishJokeCommandHandler>();
 
             services.AddScoped<IValidation<JokesFilterRequestModel>, JokesFilterValidator>();
             services.AddScoped<IValidation<PublishJokeRequestModel>, PublishJokesValidator>();

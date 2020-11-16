@@ -1,9 +1,11 @@
 ﻿using Adapter.Database.Queries.GetAllCategories;
 using Adapter.Database.Queries.GetAllFlags;
+using Common.Exceptions;
 using Core.Entities;
 using Core.Queries;
 using Core.Validations;
 using Services.Models.RequestModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -59,6 +61,11 @@ namespace Services.Validations
                         errorMessages.Add($"Flag with name {flag} could not be found");
                     }
                 }
+            }
+
+            if (errorMessages.Any())
+            {
+                throw new BadRequestException(string.Join(Environment.NewLine, errorMessages));
             }
         }
     }

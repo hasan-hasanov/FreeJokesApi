@@ -1,6 +1,8 @@
 ﻿using Core.Entities;
 using Core.Queries;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Adapter.Database.Queries.GetFlagsByNames
 {
@@ -8,6 +10,11 @@ namespace Adapter.Database.Queries.GetFlagsByNames
     {
         public GetFlagsByNamesQuery(IList<string> flagNames)
         {
+            if (flagNames == null || !flagNames.Any())
+            {
+                throw new ArgumentNullException(nameof(flagNames));
+            }
+
             FlagNames = flagNames;
         }
 
