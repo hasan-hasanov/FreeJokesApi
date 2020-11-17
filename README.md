@@ -102,29 +102,6 @@ Result
 
 ## How To Contribute
 
-**You do not agree that these are the best jokes?**
-
-* Add your favorite jokes [HERE](https://github.com/hasan-hasanov/FreeJokesApi/blob/master/Jokes/Jokes.json) in json format. For joke Id use a GUID without the hyphens. You can generate one from [online GUID generator](https://www.guidgenerator.com/online-guid-generator.aspx) and link the category id from [HERE](https://github.com/hasan-hasanov/FreeJokesApi/blob/master/Jokes/Categories.json). 
-The joke json file has the following format:
-
-```json
-    {
-      "id": "GUID without the hyphens",
-      "description": "Your hilarious joke",
-      "categoryId": "Id from Categories.json"
-    },
-```
-
-* If your category does not exist yet, just add it [HERE](https://github.com/hasan-hasanov/FreeJokesApi/blob/master/Jokes/Categories.json).
-The category json file has the following format:
-
-```json
-   {
-      "id": "Next number from the file.",
-      "description": "Category name"
-    }
-```
-
 **Did you find a bug?**
 
 * Ensure the bug was not already reported by searching on GitHub under Issues.
@@ -142,6 +119,4 @@ The category json file has the following format:
 * Open a new GitHub pull request with the patch.
 
 - - - -
-
-**Note:** _If there are new jokes and fixes I will make a release every Sunday._
 
