@@ -78,6 +78,3 @@ Parameters
 **Did you fix whitespace, format code, or make a purely cosmetic patch?**
 
 * Open a new GitHub pull request with the patch.
-
-- - - -
-
