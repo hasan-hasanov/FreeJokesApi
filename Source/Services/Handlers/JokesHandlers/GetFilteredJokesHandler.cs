@@ -37,16 +37,17 @@ namespace Services.Handlers.JokesHandlers
         {
             await _jokesFilterValidation.Validate(request, cancellationToken);
 
-            IList<Flag> flags = await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(request.Flags), cancellationToken);
-            IList<Category> categories = await _getAllCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(request.Categories), cancellationToken);
-
-            IList<long> flagIds = flags.Select(f => f.Id).ToList();
-            IList<long> categoryIds = categories.Select(f => f.Id).ToList();
+            IList<Flag> flags = request.Flags != null ?
+                await _getFlagsByNamesQuery.HandleAsync(new GetFlagsByNamesQuery(request.Flags), cancellationToken) :
+                null;
+            IList<Category> categories = request.Categories != null ?
+                await _getAllCategoriesByNamesQuery.HandleAsync(new GetCategoriesByNamesQuery(request.Categories), cancellationToken) :
+                null;
 
             IList<Joke> jokesEntity = await _getFilteredJokesQueryHandler.HandleAsync(
                 new GetFilteredJokesQuery(
-                    flagIds,
-                    categoryIds,
+                    flags?.Select(f => f.Id).ToList(),
+                    categories?.Select(f => f.Id).ToList(),
                     request.Random,
                     request.Page,
                     request.PageSize),
@@ -55,7 +56,9 @@ namespace Services.Handlers.JokesHandlers
             List<JokeResponseModel> jokes = new List<JokeResponseModel>();
             foreach (var joke in jokesEntity)
             {
-                var rating = joke.Ratings.Sum(r => r.JokeRating) / joke.Ratings.Count;
+                var rating = joke.Ratings != null && joke.Ratings.Any() ?
+                    joke.Ratings.Sum(r => r.JokeRating) / joke.Ratings.Count :
+                    0;
                 if (request.RatingMin <= rating && request.RatingMax >= rating)
                 {
                     jokes.Add(new JokeResponseModel(joke, rating));

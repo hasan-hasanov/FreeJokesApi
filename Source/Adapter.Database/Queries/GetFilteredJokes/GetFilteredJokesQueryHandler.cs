@@ -2,7 +2,6 @@
 using Core.Entities;
 using Core.Queries;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,14 +22,17 @@ namespace Adapter.Database.Queries.GetFilteredJokes
         public async Task<IList<Joke>> HandleAsync(GetFilteredJokesQuery query, CancellationToken cancellationToken = default)
         {
             List<Joke> jokes = new List<Joke>();
-            IIncludableQueryable<Joke, ICollection<Rating>> dbQuery = _context.Jokes
+            IQueryable<Joke> dbQuery = _context.Jokes
                 .Include(j => j.Category)
                 .Include(j => j.JokeFlags)
                 .ThenInclude(j => j.Flag)
-                .Include(j => j.Ratings);
+                .Include(j => j.Ratings)
+                .Include(j => j.Parts)
+                .AsQueryable();
 
             if (query.FlagIds.Any())
             {
+                // TODO: Fix this query.
                 dbQuery.Where(j => j.JokeFlags.Any(f => query.FlagIds.Contains(f.FlagId)));
             }
 
