@@ -32,8 +32,7 @@ namespace Adapter.Database.Queries.GetFilteredJokes
 
             if (query.FlagIds.Any())
             {
-                // TODO: Fix this query.
-                dbQuery.Where(j => j.JokeFlags.Any(f => query.FlagIds.Contains(f.FlagId)));
+                dbQuery.Where(j => query.FlagIds.Any(f => j.JokeFlags.Select(jf => jf.FlagId).Contains(f)));
             }
 
             if (query.CategoryIds.Any())
