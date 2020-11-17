@@ -1,5 +1,5 @@
 # FreeJokesApi
-Free api that returns only the best jokes on the internet. If you don't agree, make a pull request with your favorite jokes.
+Free api that returns only the best jokes on the internet.
 
 ## Usage
 
@@ -11,21 +11,34 @@ GET /api/jokes/getall
 Result in Json
 
 ```json
-[  
-   {  
-      "id":"5920ff05d9ab4203bb8a55b91fbf2250",
-      "description":"Anton, do you think I’m a bad mother? My name is Paul.",
-      "category":"Stupid"
+[
+   {
+      "id":"1",
+      "category":"Stupid",
+      "parts":[
+         {
+            "part":"Anton, do you think I’m a bad mother?",
+            "order":1
+         },
+         {
+            "part":"My name is Paul.",
+            "order":2
+         }
+      ],
+      "jokeFlags":[],
+      "rating":3
    },
-   {  
-      "id":"81f67fdbf552427d95c3d40ad42bf142",
-      "description":"The congress regarding hypochondria was canceled due to illness.",
-      "category":"Stupid"
-   },
-   {  
-      "id":"aaba4d9eea304971a22227a0f4fbdd39",
-      "description":"A man enters a taxi with a hot dog. – Excuse me, this is not a restaurant! – I know. That’s why I brought my own food!",
-      "category":"Stupid"
+   {
+      "id":"2",
+      "category":"Stupid",
+      "parts":[
+         {
+            "part":"The congress regarding hypochondria was canceled due to illness.",
+            "order":1
+         }
+      ],
+      "jokeFlags":[],
+      "rating":2
    }
 ]
 ```
@@ -40,65 +53,13 @@ Parameters
 
 | Name          | Type          | Description  |
 | :-------------|:-------------:| :-----------------------------------------------------------------------------|
-| categoryName  | string        | Name of the category to retrieve.                                             |
-| count         | int           | Count of the jokes to retrieve. Can be combined with `categoryName` parameter.|
-
-Retrieve list of categories
-
-```
-GET /api/categories
-```
-
-Result in Json
-
-```json
-[  
-   {  
-      "id":1,
-      "name":"Stupid"
-   },
-   {  
-      "id":2,
-      "name":"Programmer"
-   }
-]
-```
-Get joke by Id
-
-```
-GET /api/jokes/getbyId?id=5920ff05d9ab4203bb8a55b91fbf2250
-```
-Result
-
-```json
-{  
-   "id":"5920ff05d9ab4203bb8a55b91fbf2250",
-   "description":"Anton, do you think I’m a bad mother? \n My name is Paul.",
-   "category":"Stupid"
-}
-```
-
-Get random joke from the api
-
-```
-GET /api/jokes/random
-```
-
-Parameters
-
-| Name          | Type          | Description  |
-| :-------------|:-------------:| :-----------------------------------------------------------------------------|
-| categoryName  | string        | Name of the category to retrieve. This is optional parameter.                 |
-
-Result
-
-```json
-{  
-   "id":"81f67fdbf552427d95c3d40ad42bf142",
-   "description":"The congress regarding hypochondria was canceled due to illness.",
-   "category":"Stupid"
-}
-```
+| flags         | string        | By default the api does not return inapropriate jokes. If you want then you can request them here. |
+| categories    | string        | Joke categories. You can add multiple categories like Categories=puns&Categories=programming       |
+| ratingMin     | number        | Minimum rating that a joke must have. [0 10]                                                       |
+| ratingMax     | number        | Maximum rating that a joke must have. [0 10]. This should be greater than ratingMin                |
+| random        | bool          | Specify if the returned jokes should be random. Cannot be used with page parameter.                |
+| page          | number        | Pagination functionality. Cannot be combined with random.                                          |
+| pageSize      | number        | Jokes in a page [1 100]                                                                            |
 
 ## How To Contribute
 
